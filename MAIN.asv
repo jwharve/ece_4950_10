@@ -54,7 +54,7 @@ if new ~= 2 % if you want to take a new picture
 else % if you want to use previous pictures
     % load the last picture by timestamp
     pics = ls('pics_*.mat');
-    load(pics(end,:));
+    load(pics(end-1,:));
 end
 
 %% subtraction
@@ -62,7 +62,7 @@ redImg = without(:,:,1) - with(:,:,1);
 greenImg = without(:,:,2) - with(:,:,2);
 blueImg = without(:,:,3) - with(:,:,3);
 
-thresh = 0.2;
+thresh = 0.1;
 
 % threshold
 subtractr = im2bw(redImg,thresh);
@@ -88,7 +88,6 @@ se4 = strel('disk',4);
 se5 = strel('disk',5);
 se6 = strel('disk',6);
 
-di1 = strel('diamond',1);
 di2 = strel('diamond',2);
 di3 = strel('diamond',3);
 di4 = strel('diamond',4);
@@ -98,16 +97,31 @@ img = pic;
 imshow(img);
 pause(1);
 
-img = imerode(img, di2);
+img = imerode(img, se1);
 imshow(img)
 pause(1);
 
-img = imdilate(img, di3);
+img = imerode(img, se1);
 imshow(img)
 pause(1);
 
-img = imerode(img, di2);
+img = imdilate(img, se1);
 imshow(img)
+pause(1);
+
+img = imerode(img, di3);
+imshow(img)
+pause(1);
+
+img = imdilate(img, se2);
+imshow(img)
+pause(1);
+
+img = imerode(img,se3);
+imshow(img)
+pause(1);
+
+imshow(img);
 pause(1);
 
 % display the original and processed
