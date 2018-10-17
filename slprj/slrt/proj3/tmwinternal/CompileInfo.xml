@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1">
+    <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="4e2e97f0-0b16-4a50-9fcc-a26ebdd60923">
+        <dataDictionary/>
+        <dataTransferInfos>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAAAAAABAAAAAQAAAAAAAAAFAAQAAQAAAAEAAAAAAAAA</dataTransferInfos>
+        <hasInlineVariantBlock>false</hasInlineVariantBlock>
+        <hasMachineDataAccess>false</hasMachineDataAccess>
+        <hasSigObjWithICDrivingRootOutport>false</hasSigObjWithICDrivingRootOutport>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <needElapsedTime>false</needElapsedTime>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="7530c870-5ec8-4870-afa5-3bf882091985">
+            <EMVCE/>
+            <originalPortNumber>0</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="5970a448-9b99-45c2-89d0-0252c5d1e96f">
+            <EMVCE/>
+            <originalPortNumber>1</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="41c2a393-3a80-4216-be3f-e03c54e107ae">
+            <EMVCE/>
+            <originalPortNumber>2</originalPortNumber>
+        </outports>
+        <userSpecifiedFixedStepSize>0</userSpecifiedFixedStepSize>
+        <zeroInternalMemoryAtStartupUnchecked>false</zeroInternalMemoryAtStartupUnchecked>
+        <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="6c45a5ce-4ccb-4bdc-9873-517e3e8f346e"/>
+        <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="226d9c9e-83b4-4572-a84d-024207ac95dc">
+            <hasHiddenDeterministicRTB>false</hasHiddenDeterministicRTB>
+        </periodicEventPortUnsupportedBlockInfo>
+        <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="ff4aab99-e946-4c31-ba20-99ddeace71a1">
+            <compSimulinkFunctionCatalog>AAFJTQAAAAAOAAAAgAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAFAAQADgAAAAEAAAAOAAAAQ29tcEZ1bmN0aW9ucwAAAA4AAAAwAAAABgAAAAgAAAAGAAAAAAAAAAUAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAkAAAAAAAAA</compSimulinkFunctionCatalog>
+            <postPropHasAnyExportedFunction>false</postPropHasAnyExportedFunction>
+            <postPropHasAnyVariantExportedFunction>false</postPropHasAnyVariantExportedFunction>
+        </simulinkFunctions>
+    </ModelRefInfoRepo.ModelRefInfoRoot>
+</MF0>
