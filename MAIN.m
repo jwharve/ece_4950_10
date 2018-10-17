@@ -9,15 +9,19 @@ update motor position
 
 clearvars -except tg cam; close all; clc;
 
+connected = 0;
+
 corner = [103 16];
 side = 440;
 motorLoc = [325 -2/1.4*(side/8)];
 
-if ~exist('tg')
-    rtwbuild('proj3');
+if connected
+    if ~exist('tg')
+        rtwbuild('proj3');
+    end
+    tg.load('proj3');
+    tg.start;
 end
-tg.load('proj3');
-tg.start;
 
 if 1
     new = menu('New Pictures?','Yes','No');
@@ -55,7 +59,7 @@ if new ~= 2
     save(name,'with','without');
 else
     pics = ls('pics_*.mat');
-    load(pics(end,:));
+    load(pics(end-1,:));
 end
 
 %% subtraction
@@ -145,11 +149,12 @@ for ii = 1:size(props,1)
         a = round(props(ii).Centroid);
         row = a(1);
         col = a(2);
-        r = with(col, row,1);
-        g = with(col, row,2);
-        b = with(col, row,3);
+        r = mean(mean(with(col-5:col+5, row-5:row+5,1)));
+        g = mean(mean(with(col-5:col+5, row-5:row+5,2)));
+        b = mean(mean(with(col-5:col+5, row-5:row+5,3)));
+
         [r g b];
-        if r > 150 && r < 190 && g > 150 && g < 190 && b > 85 && b < 120
+        if r > 150 && r < 210 && g > 150 && g < 210 && b > 85 && b < 130
             color = 'y';
             colorName = 'Yellow';
         elseif r < 110 && g < 130 && b > 100
@@ -190,7 +195,13 @@ while 1
     fprintf('Angle = %0.2f\n\n',angle);
     
     % move motor
-    tg.setparam(tg.getparamid('myVar','Value'),angle)
+    if connected
+        tg.setparam(tg.getparamid('myVar','Value'),angle)
+    end
+end
+
+if connected
+    tg.setparam(tg.getparamid('myVar','Value'),0)
 end
 
 tg.stop;
