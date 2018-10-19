@@ -54,7 +54,7 @@ if new ~= 2 % if you want to take a new picture
 else % if you want to use previous pictures
     % load the last picture by timestamp
     pics = ls('pics_*.mat');
-    load(pics(end,:));
+    load(pics(end-2,:));
 end
 
 %% subtraction
@@ -96,19 +96,19 @@ di4 = strel('diamond',4);
 % erode and dilate
 img = pic;
 imshow(img);
-pause(1);
+pause(0.5);
 
 img = imerode(img, di2);
 imshow(img)
-pause(1);
+pause(0.5);
 
+img = imerode(img, di2);
 img = imdilate(img, di3);
 imshow(img)
-pause(1);
+pause(0.5);
 
-img = imerode(img, di2);
 imshow(img)
-pause(1);
+pause(0.5);
 
 % display the original and processed
 imshowpair(with,img,'montage');
@@ -120,21 +120,22 @@ props = regionprops(bwconn);
 hold on;
 numPieces = 0;
 for ii = 1:size(props,1)        
-    if props(ii).Area > 15
+    if props(ii).Area > 20
         numPieces = numPieces + 1;
         center = props(ii).Centroid;
 
-        % get shape
-        if props(ii).Area < 200
+        %get shape
+        if props(ii).Area < 210
             type = 'Triangle';
             marker = '^';
-        elseif props(ii).Area < 500
+        elseif props(ii).Area < 530
             type = 'Square';
             marker = 's';
         else
             type = 'Circle';
             marker = 'o';
         end
+        
         
         % get color
         a = round(props(ii).Centroid);
@@ -147,7 +148,7 @@ for ii = 1:size(props,1)
         if r > 150 && r < 210 && g > 150 && g < 210 && b > 85 && b < 130
             color = 'y';
             colorName = 'Yellow';
-        elseif r < 110 && g < 130 && b > 100
+        elseif r < 110 && g < 130 && b > 120
             color = 'b';
             colorName = 'Blue';
         elseif r > 130 && g < 100
