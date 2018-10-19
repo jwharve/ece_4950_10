@@ -3,7 +3,21 @@ Model {
   Version		  9.0
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
-    NumRootInports	    0
+    NumRootInports	    2
+    Inport {
+      Name		      "myVar2 "
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      SampleTime	      "-1"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "In1"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      SampleTime	      "-1"
+      UnitExpr		      "inherit"
+    }
     NumRootOutports	    3
     Outport {
       Name		      "setpoint_Out"
@@ -27,7 +41,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.93"
+    ComputedModelVersion    "1.91"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -128,7 +142,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
 	ZoomFactor		[0.86999999999999977]
-	Offset			[1.1368683772161603e-12, 0.0]
+	Offset			[9.0949470177292824e-13, 0.0]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -162,9 +176,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 17 16:07:55 2018"
-  RTWModifiedTimeStamp	  461693270
-  ModelVersionFormat	  "1.%<AutoIncrement:93>"
+  LastModifiedDate	  "Fri Oct 19 14:17:54 2018"
+  RTWModifiedTimeStamp	  461859472
+  ModelVersionFormat	  "1.%<AutoIncrement:91>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -803,7 +817,7 @@ Model {
 	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
-		Dimension		19
+		Dimension		18
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"RemoveResetFunc"
@@ -822,7 +836,6 @@ Model {
 		Cell			"RemoveDisableFunc"
 		Cell			"MatFileLogging"
 		Cell			"GRTInterface"
-		Cell			"CombineOutputUpdateFcns"
 		PropName		"DisabledProps"
 	      }
 	      Description	      ""
@@ -1246,6 +1259,23 @@ Model {
     ZoomFactor		    "87"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "87"
+    Block {
+      BlockType		      Inport
+      Name		      "myVar2\n"
+      SID		      "87"
+      Position		      [45, 368, 75, 382]
+      ZOrder		      11
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "In1"
+      SID		      "86"
+      Position		      [210, 483, 240, 497]
+      ZOrder		      10
+      Port		      "2"
+      IconDisplay	      "Port number"
+    }
     Block {
       BlockType		      Constant
       Name		      "1 - Use simulated motor\n0 - Use real motor"
@@ -2104,7 +2134,7 @@ Model {
       Position		      [30, 232, 85, 278]
       ZOrder		      -4
       BackgroundColor	      "red"
-      Value		      "90"
+      Value		      "0"
       OutDataTypeStr	      "double"
     }
     Block {

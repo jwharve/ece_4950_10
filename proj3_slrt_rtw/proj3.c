@@ -8,9 +8,9 @@
  *
  * Code generation for model "proj3".
  *
- * Model version              : 1.93
+ * Model version              : 1.91
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Wed Oct 17 17:42:41 2018
+ * C source code generated on : Fri Oct 19 14:18:37 2018
  *
  * Target selection: slrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -32,6 +32,9 @@ X_proj3_T proj3_X;
 
 /* Block states (auto storage) */
 DW_proj3_T proj3_DW;
+
+/* External inputs (root inport signals with auto storage) */
+ExtU_proj3_T proj3_U;
 
 /* External outputs (root outports fed by signals with auto storage) */
 ExtY_proj3_T proj3_Y;
@@ -893,6 +896,10 @@ RT_MODEL_proj3_T *proj3(void)
   (void) memset((void *)&proj3_DW, 0,
                 sizeof(DW_proj3_T));
 
+  /* external inputs */
+  proj3_M->inputs = (((void*)&proj3_U));
+  (void)memset((void *)&proj3_U, 0, sizeof(ExtU_proj3_T));
+
   /* external outputs */
   proj3_M->outputs = (&proj3_Y);
   (void) memset((void *)&proj3_Y, 0,
@@ -1216,7 +1223,7 @@ RT_MODEL_proj3_T *proj3(void)
   proj3_M->Sizes.numContStates = (4);  /* Number of continuous states */
   proj3_M->Sizes.numPeriodicContStates = (0);/* Number of periodic continuous states */
   proj3_M->Sizes.numY = (3);           /* Number of model outputs */
-  proj3_M->Sizes.numU = (0);           /* Number of model inputs */
+  proj3_M->Sizes.numU = (2);           /* Number of model inputs */
   proj3_M->Sizes.sysDirFeedThru = (0); /* The model is not direct feedthrough */
   proj3_M->Sizes.numSampTimes = (2);   /* Number of sample times */
   proj3_M->Sizes.numBlocks = (40);     /* Number of blocks */

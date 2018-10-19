@@ -8,9 +8,9 @@
  *
  * Code generation for model "proj3".
  *
- * Model version              : 1.93
+ * Model version              : 1.91
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Wed Oct 17 17:42:41 2018
+ * C source code generated on : Fri Oct 19 14:18:37 2018
  *
  * Target selection: slrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

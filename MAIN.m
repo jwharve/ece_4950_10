@@ -2,9 +2,9 @@
 
 clearvars -except tg cam; close all; clc;
 
-connected = 0; % set to 0 if not connected to Q4 board
+connected = 1; % set to 0 if not connected to Q4 board
 
-motorLoc = [1 1]; % position of the motor in "pixels"
+motorLoc = [291 -30]; % position of the motor in "pixels"
 
 if connected
     if ~exist('tg') % check to see if the target is already built
@@ -37,12 +37,12 @@ if new ~= 2 % if you want to take a new picture
     preview(cam);
     
     % capture image with pieces
-    menu('Image with pieces','capture');
-    with = snapshot(cam);
-    
-    % capture image without pieces
     menu('Image without pieces','capture');
     without = snapshot(cam);
+    
+    % capture image without pieces
+    menu('Image with pieces','capture');
+    with = snapshot(cam);
     
     % close preview
     closePreview(cam);
@@ -180,10 +180,10 @@ while 1
 
     % get distances for angle
     x = motorLoc(1)-pieces(sel).centroid(1);
-    y = motorLoc(2)-pieces(sel).centroid(2);
+    y = pieces(sel).centroid(2)-motorLoc(2);
 
     % calculate angle
-    angle = -atand(x/y);
+    angle = atand(x/y);
     
     % print selection and angle
     fprintf('%s:\n',pieces(sel).name{1});

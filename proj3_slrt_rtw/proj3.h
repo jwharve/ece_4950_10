@@ -8,9 +8,9 @@
  *
  * Code generation for model "proj3".
  *
- * Model version              : 1.93
+ * Model version              : 1.91
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Wed Oct 17 17:42:41 2018
+ * C source code generated on : Fri Oct 19 14:18:37 2018
  *
  * Target selection: slrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -954,6 +954,12 @@ typedef struct {
 
 #endif
 
+/* External inputs (root inport signals with auto storage) */
+typedef struct {
+  real_T myVar2;                       /* '<Root>/myVar2 ' */
+  real_T In1;                          /* '<Root>/In1' */
+} ExtU_proj3_T;
+
 /* External outputs (root outports fed by signals with auto storage) */
 typedef struct {
   real_T setpoint_Out;                 /* '<Root>/setpoint_Out' */
@@ -964,6 +970,8 @@ typedef struct {
 /* Backward compatible GRT Identifiers */
 #define rtB                            proj3_B
 #define BlockIO                        B_proj3_T
+#define rtU                            proj3_U
+#define ExternalInputs                 ExtU_proj3_T
 #define rtX                            proj3_X
 #define ContinuousStates               X_proj3_T
 #define rtXdot                         proj3_XDot
@@ -979,7 +987,7 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct P_proj3_T_ {
-  real_T myVar_Value;                  /* Expression: 90
+  real_T myVar_Value;                  /* Expression: 0
                                         * Referenced by: '<Root>/myVar'
                                         */
   real_T gain_Gain;                    /* Expression: 1
@@ -1335,6 +1343,9 @@ extern X_proj3_T proj3_X;
 
 /* Block states (auto storage) */
 extern DW_proj3_T proj3_DW;
+
+/* External inputs (root inport signals with auto storage) */
+extern ExtU_proj3_T proj3_U;
 
 /* External outputs (root outports fed by signals with auto storage) */
 extern ExtY_proj3_T proj3_Y;
