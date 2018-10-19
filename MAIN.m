@@ -15,7 +15,7 @@ if connected
     tg.start;
 end
 
-if 0 % I just added this so I could skip the menu
+if 1 % I just added this so I could skip the menu
     new = menu('New Pictures?','Yes','No');
 else
     new = 2;
