@@ -1,4 +1,4 @@
-function [] = arm_pos(position)
+function [] = arm_pos(tg,position)
 
 tg.setparam(tg.getparamid('Position','Value'),position)
 

@@ -1,12 +1,10 @@
 clearvars -except tg; close all; clc;
 
 if ~exist('tg','var') % check to see if the target is already built
-        rtwbuild('motor_param_test');
+        rtwbuild('model');
 end
-tg.load('motor_param_test');
+tg.load('model');
 tg.start;
-
-tg.setparam(tg.getparamid('Switch','Value'),sim)
 
 keyboard;
 

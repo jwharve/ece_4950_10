@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.101"
+    ComputedModelVersion    "1.124"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -37,11 +37,17 @@ Model {
     HasTerminateEvent	    0
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 10
+    NumExternalFileReferences 9
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/Data Display"
       SID		      "53"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "xpcquanserlib/Counter/Q4 Cnt "
+      Path		      "model/Q4 Cnt "
+      SID		      "114"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -70,12 +76,6 @@ Model {
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "model/analog read "
-      SID		      "101"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/error signal"
       SID		      "32"
       Type		      "LIBRARY_BLOCK"
@@ -90,12 +90,6 @@ Model {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/setpoint"
       SID		      "43"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "xpcquanserlib/A//D/Q4 AD"
-      Path		      "model/yuio"
-      SID		      "100"
       Type		      "LIBRARY_BLOCK"
     }
     OrderedModelArguments   1
@@ -151,8 +145,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
-	ZoomFactor		[1.0]
-	Offset			[-159.36255427505091, -219.24799401482232]
+	ZoomFactor		[0.8]
+	Offset			[-533.38016822866507, -405.12188949440542]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -186,9 +180,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 14 03:40:57 2018"
-  RTWModifiedTimeStamp	  464067560
-  ModelVersionFormat	  "1.%<AutoIncrement:101>"
+  LastModifiedDate	  "Wed Nov 14 16:57:36 2018"
+  RTWModifiedTimeStamp	  464115420
+  ModelVersionFormat	  "1.%<AutoIncrement:124>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -297,7 +291,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "inf"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.001"
+	  FixedStep		  "0.0001"
 	  InitialStep		  "auto"
 	  MaxOrder		  5
 	  ZcThreshold		  "auto"
@@ -318,7 +312,7 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
+	  SolverInfoToggleStatus  on
 	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
@@ -827,7 +821,7 @@ Model {
 	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
-		Dimension		18
+		Dimension		19
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"RemoveResetFunc"
@@ -846,6 +840,7 @@ Model {
 		Cell			"RemoveDisableFunc"
 		Cell			"MatFileLogging"
 		Cell			"GRTInterface"
+		Cell			"CombineOutputUpdateFcns"
 		PropName		"DisabledProps"
 	      }
 	      Description	      ""
@@ -1075,6 +1070,12 @@ Model {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
       BlockType		      Derivative
       CoefficientInTFapproximation "inf"
     }
@@ -1186,6 +1187,12 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+    }
+    Block {
       BlockType		      Saturate
       UpperLimitSource	      "Dialog"
       UpperLimit	      "0.5"
@@ -1253,6 +1260,9 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "model"
@@ -1269,16 +1279,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "106"
-    Block {
-      BlockType		      Constant
-      Name		      "Constant"
-      SID		      "92"
-      Position		      [30, -105, 60, -75]
-      ZOrder		      16
-    }
+    SIDHighWatermark	    "120"
     Block {
       BlockType		      Reference
       Name		      "Data Display"
@@ -1348,7 +1351,7 @@ Model {
       Position		      [375, 310, 430, 360]
       ZOrder		      -7
       BackgroundColor	      "yellow"
-      Gain		      "0.011"
+      Gain		      "3"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1360,7 +1363,7 @@ Model {
       Position		      [390, 390, 450, 430]
       ZOrder		      -8
       BackgroundColor	      "yellow"
-      Gain		      "0.26"
+      Gain		      ".0025"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1372,10 +1375,144 @@ Model {
       Position		      [360, 236, 415, 274]
       ZOrder		      -9
       BackgroundColor	      "yellow"
-      Gain		      "0.5"
+      Gain		      ".48"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "MATLAB Function"
+      SID		      "117"
+      Ports		      [1, 2]
+      Position		      [195, -311, 265, -264]
+      ZOrder		      36
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      SFBlockType	      "MATLAB Function"
+      Variant		      off
+      System {
+	Name			"MATLAB Function"
+	Location		[223, 338, 826, 833]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"22"
+	Block {
+	  BlockType		  Inport
+	  Name			  "state"
+	  SID			  "117::1"
+	  Position		  [20, 101, 40, 119]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "117::20"
+	  Ports			  [1, 1]
+	  Position		  [270, 230, 320, 270]
+	  ZOrder		  11
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "117::19"
+	  Tag			  "Stateflow S-Function model 2"
+	  Ports			  [1, 3]
+	  Position		  [180, 100, 230, 180]
+	  ZOrder		  10
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[1 3]"
+	  SFunctionDeploymentMode off
+	  EnableBusSupport	  on
+	  SFcnIsStateOwnerBlock	  off
+	  Port {
+	    PortNumber		    2
+	    Name		    "low"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "high"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "117::21"
+	  Position		  [460, 241, 480, 259]
+	  ZOrder		  12
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "low"
+	  SID			  "117::5"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  -5
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "high"
+	  SID			  "117::22"
+	  Position		  [460, 136, 480, 154]
+	  ZOrder		  13
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  "state"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "low"
+	  ZOrder		  10
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "low"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "high"
+	  ZOrder		  11
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  3
+	  DstBlock		  "high"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  13
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Mux
@@ -1400,10 +1537,31 @@ Model {
     }
     Block {
       BlockType		      Reference
+      Name		      "Q4 Cnt "
+      SID		      "114"
+      Ports		      [2]
+      Position		      [420, -314, 525, -256]
+      ZOrder		      33
+      LibraryVersion	      "1.52"
+      SourceBlock	      "xpcquanserlib/Counter/Q4 Cnt "
+      SourceType	      "quanser_q4_cnt"
+      SourceProductName	      "Simulink Real-Time"
+      SourceProductBaseCode   "XP"
+      channel		      "[1]"
+      mode		      "1"
+      showArm		      "[0]"
+      reset		      "[1]"
+      initLoCount	      "[0]"
+      initHiCount	      "[0]"
+      sampleTime	      ".0001"
+      slot		      "-1"
+    }
+    Block {
+      BlockType		      Reference
       Name		      "Q4 DI "
       SID		      "91"
       Ports		      [0, 1]
-      Position		      [440, -58, 540, -2]
+      Position		      [435, -3, 535, 53]
       ZOrder		      15
       LibraryVersion	      "1.52"
       SourceBlock	      "xpcquanserlib/Digital\nInput/Q4 DI "
@@ -1411,25 +1569,25 @@ Model {
       SourceProductName	      "Simulink Real-Time"
       SourceProductBaseCode   "XP"
       channel		      "7"
-      sampleTime	      "0.001"
+      sampleTime	      "0.0001"
       slot		      "-1"
     }
     Block {
       BlockType		      Reference
       Name		      "Q4 DO "
       SID		      "90"
-      Ports		      [3]
-      Position		      [175, -59, 280, -1]
+      Ports		      [4]
+      Position		      [250, -53, 355, 8]
       ZOrder		      14
       LibraryVersion	      "1.52"
       SourceBlock	      "xpcquanserlib/Digital\nOutput/Q4 DO "
       SourceType	      "quanser_q4_do"
       SourceProductName	      "Simulink Real-Time"
       SourceProductBaseCode   "XP"
-      channel		      "[8 6 5]"
+      channel		      "[3 4 5 6]"
       reset		      "[1]"
       initValue		      "[0]"
-      sampleTime	      ".001"
+      sampleTime	      ".0001"
       slot		      "-1"
     }
     Block {
@@ -1484,7 +1642,7 @@ Model {
 	  simul			  off
 	  reset			  "[1]"
 	  initValue		  "[0]"
-	  sampleTime		  ".001"
+	  sampleTime		  ".0001"
 	  slot			  "-1"
 	}
 	Block {
@@ -1508,7 +1666,7 @@ Model {
 	  synchronousIndex	  "[0]"
 	  indexPolarity		  "[0]"
 	  preserveCounts	  "[0]"
-	  sampleTime		  ".001"
+	  sampleTime		  ".0001"
 	  slot			  "-1"
 	}
 	Block {
@@ -1888,25 +2046,40 @@ Model {
     }
     Block {
       BlockType		      Constant
-      Name		      "Steper_Step"
-      SID		      "106"
-      Position		      [30, -45, 60, -15]
-      ZOrder		      27
+      Name		      "Stepper1_Dir"
+      SID		      "110"
+      Position		      [30, -145, 60, -115]
+      ZOrder		      31
       Value		      "0"
     }
     Block {
       BlockType		      Constant
-      Name		      "Stepper_Dir"
+      Name		      "Stepper1_Step"
+      SID		      "111"
+      Position		      [30, -95, 60, -65]
+      ZOrder		      32
+      Value		      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Stepper2_Dir"
       SID		      "97"
       Position		      [30, 25, 60, 55]
       ZOrder		      21
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Stepper2_Step"
+      SID		      "106"
+      Position		      [30, 75, 60, 105]
+      ZOrder		      27
       Value		      "0"
     }
     Block {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "95"
-      Position		      [730, -48, 765, -12]
+      Position		      [725, 7, 760, 43]
       ZOrder		      19
     }
     Block {
@@ -1953,43 +2126,6 @@ Model {
       NamePlacement	      "alternate"
       HideAutomaticName	      off
       Value		      "0"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "analog read\n"
-      SID		      "101"
-      Ports		      [1]
-      Position		      [625, -176, 710, -134]
-      ZOrder		      25
-      LibraryVersion	      "1.1893"
-      SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
-      SourceType	      "xpcscopeblock"
-      SourceProductName	      "Simulink Real-Time"
-      SourceProductBaseCode   "XP"
-      ContentPreviewEnabled   off
-      scopeno		      "4"
-      scopetype		      "Target"
-      autostart		      on
-      viewmode		      "Graphical rolling"
-      formatstr		      "'%15.6f'"
-      grid		      on
-      ylimits		      "[-1 6]"
-      nosamples		      "500"
-      noprepostsamples	      "0"
-      interleave	      "10"
-      triggermode	      "FreeRun"
-      triggersignal	      "1"
-      trigsignalfromport      off
-      triggerlevel	      "0.0"
-      triggerslope	      "Either"
-      triggerscope	      "1"
-      triggersample	      "0"
-      filename		      "data.dat"
-      mode		      "Lazy"
-      writesize		      "512"
-      autorestart	      off
-      dynamicfilemode	      off
-      maxwritefilesize	      "512*1024^2"
     }
     Block {
       BlockType		      Reference
@@ -2236,6 +2372,14 @@ Model {
       maxwritefilesize	      "512*1024^2"
     }
     Block {
+      BlockType		      Constant
+      Name		      "oc"
+      SID		      "115"
+      Position		      [40, -300, 70, -270]
+      ZOrder		      34
+      Value		      "0"
+    }
+    Block {
       BlockType		      Reference
       Name		      "setpoint"
       SID		      "43"
@@ -2450,22 +2594,6 @@ Model {
 	  DstPort		  2
 	}
       }
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "yuio"
-      SID		      "100"
-      Ports		      [0, 1]
-      Position		      [255, -183, 355, -127]
-      ZOrder		      24
-      LibraryVersion	      "1.52"
-      SourceBlock	      "xpcquanserlib/A//D/Q4 AD"
-      SourceType	      "quanser_q4_ad"
-      SourceProductName	      "Simulink Real-Time"
-      SourceProductBaseCode   "XP"
-      channel		      "3"
-      sampleTime	      "0.001"
-      slot		      "-1"
     }
     Block {
       BlockType		      Outport
@@ -2741,42 +2869,65 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      50
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      Points		      [53, 0; 0, 40]
-      DstBlock		      "Q4 DO "
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      52
+      ZOrder		      85
       SrcBlock		      "Q4 DI "
       SrcPort		      1
       DstBlock		      "Stop Simulation"
       DstPort		      1
     }
     Line {
-      ZOrder		      61
-      SrcBlock		      "Steper_Step"
+      ZOrder		      102
+      SrcBlock		      "Stepper2_Dir"
       SrcPort		      1
-      DstBlock		      "Q4 DO "
-      DstPort		      2
-    }
-    Line {
-      ZOrder		      57
-      SrcBlock		      "Stepper_Dir"
-      SrcPort		      1
-      Points		      [53, 0; 0, -50]
+      Points		      [45, 0; 0, -55]
       DstBlock		      "Q4 DO "
       DstPort		      3
     }
     Line {
-      ZOrder		      60
-      SrcBlock		      "yuio"
+      ZOrder		      103
+      SrcBlock		      "Stepper1_Dir"
       SrcPort		      1
-      Points		      [40, 0; 0, 10; 175, 0; 0, -10]
-      DstBlock		      "analog read\n"
+      Points		      [98, 0; 0, 85]
+      DstBlock		      "Q4 DO "
       DstPort		      1
+    }
+    Line {
+      ZOrder		      115
+      SrcBlock		      "Stepper1_Step"
+      SrcPort		      1
+      Points		      [54, 0; 0, 50]
+      DstBlock		      "Q4 DO "
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      119
+      SrcBlock		      "MATLAB Function"
+      SrcPort		      1
+      DstBlock		      "Q4 Cnt "
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      120
+      SrcBlock		      "MATLAB Function"
+      SrcPort		      2
+      Points		      [68, 0; 0, 5]
+      DstBlock		      "Q4 Cnt "
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      121
+      SrcBlock		      "oc"
+      SrcPort		      1
+      DstBlock		      "MATLAB Function"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      122
+      SrcBlock		      "Stepper2_Step"
+      SrcPort		      1
+      Points		      [26, 0; 0, -90]
+      DstBlock		      "Q4 DO "
+      DstPort		      4
     }
     Annotation {
       SID		      "82"
@@ -2821,19 +2972,172 @@ Stateflow {
     created		    "13-Mar-2012 16:28:53"
     isLibrary		    0
     sfVersion		    80000012
-    firstTarget		    2
+    firstTarget		    10
+  }
+  chart {
+    id			    2
+    machine		    1
+    name		    "MATLAB Function"
+    windowPosition	    [422 539.941 189 413]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 3600 1200 1.180555555555556]
+    treeNode		    [0 3 0 0]
+    viewObj		    2
+    visible		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "fcn"
+    }
+    firstData		    4
+    firstTransition	    8
+    firstJunction	    7
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [low,high] = fcn(state)\n\nperiod = 20e-3;\n\nstep = 30e-9;\n\nif state == 1\n    time_h"
+      "igh = 0.73e-3;\nelse\n    time_high = 0.9e-3;\nend\n\nlow = round((period-time_high)/step);\nhigh = round(time_h"
+      "igh/step);\n\n\nend"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    4
+    ssIdNumber		    4
+    name		    "state"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [2 0 5]
+  }
+  data {
+    id			    5
+    ssIdNumber		    5
+    name		    "low"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [2 4 6]
+  }
+  data {
+    id			    6
+    ssIdNumber		    6
+    name		    "high"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [2 5 0]
+  }
+  junction {
+    id			    7
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+    linkNode		    [2 0 0]
+  }
+  transition {
+    id			    8
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [28.125 13.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      7
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+    linkNode		    [2 0 0]
+  }
+  instance {
+    id			    9
+    machine		    1
+    name		    "MATLAB Function"
+    chart		    2
   }
   target {
-    id			    2
+    id			    10
     machine		    1
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
-    linkNode		    [1 0 3]
+    linkNode		    [1 0 11]
   }
   target {
-    id			    3
+    id			    11
     machine		    1
     name		    "rtw"
-    linkNode		    [1 2 0]
+    linkNode		    [1 10 0]
   }
 }
