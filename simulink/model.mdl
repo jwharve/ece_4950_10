@@ -1,5 +1,5 @@
 Model {
-  Name			  "motor_param_test"
+  Name			  "model"
   Version		  9.0
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.99"
+    ComputedModelVersion    "1.101"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -40,61 +40,61 @@ Model {
     NumExternalFileReferences 10
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "motor_param_test/Data Display"
+      Path		      "model/Data Display"
       SID		      "53"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "xpcquanserlib/Digital\nInput/Q4 DI "
-      Path		      "motor_param_test/Q4 DI "
+      Path		      "model/Q4 DI "
       SID		      "91"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "xpcquanserlib/Digital\nOutput/Q4 DO "
-      Path		      "motor_param_test/Q4 DO "
+      Path		      "model/Q4 DO "
       SID		      "90"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "xpcquanserlib/D//A/Q4 DA "
-      Path		      "motor_param_test/Real motor/Channel 0 -Control signal to  motor through amplifier "
+      Path		      "model/Real motor/Channel 0 -Control signal to  motor through amplifier "
       SID		      "10"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "xpcquanserlib/Incremental\nEncoder/Q4 Enc "
-      Path		      "motor_param_test/Real motor/Channel 0 of  Encoder Inputs "
+      Path		      "model/Real motor/Channel 0 of  Encoder Inputs "
       SID		      "11"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "motor_param_test/analog read "
+      Path		      "model/analog read "
       SID		      "101"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "motor_param_test/error signal"
+      Path		      "model/error signal"
       SID		      "32"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "motor_param_test/motor position"
+      Path		      "model/motor position"
       SID		      "42"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
-      Path		      "motor_param_test/setpoint"
+      Path		      "model/setpoint"
       SID		      "43"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "xpcquanserlib/A//D/Q4 AD"
-      Path		      "motor_param_test/yuio"
+      Path		      "model/yuio"
       SID		      "100"
       Type		      "LIBRARY_BLOCK"
     }
@@ -186,9 +186,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 13 18:58:24 2018"
-  RTWModifiedTimeStamp	  464029258
-  ModelVersionFormat	  "1.%<AutoIncrement:99>"
+  LastModifiedDate	  "Wed Nov 14 03:40:57 2018"
+  RTWModifiedTimeStamp	  464067560
+  ModelVersionFormat	  "1.%<AutoIncrement:101>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -240,11 +240,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "motor_param_test"
+    model_		    "model"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "motor_param_test"
+      Cell		      "model"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -827,7 +827,7 @@ Model {
 	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
-		Dimension		19
+		Dimension		18
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"RemoveResetFunc"
@@ -846,7 +846,6 @@ Model {
 		Cell			"RemoveDisableFunc"
 		Cell			"MatFileLogging"
 		Cell			"GRTInterface"
-		Cell			"CombineOutputUpdateFcns"
 		PropName		"DisabledProps"
 	      }
 	      Description	      ""
@@ -1080,17 +1079,6 @@ Model {
       CoefficientInTFapproximation "inf"
     }
     Block {
-      BlockType		      DiscretePulseGenerator
-      PulseType		      "Sample based"
-      TimeSource	      "Use simulation time"
-      Amplitude		      "1"
-      Period		      "2"
-      PulseWidth	      "1"
-      PhaseDelay	      "0"
-      SampleTime	      "1"
-      VectorParams1D	      on
-    }
-    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -1267,7 +1255,7 @@ Model {
     }
   }
   System {
-    Name		    "motor_param_test"
+    Name		    "model"
     Location		    [-8, -8, 1928, 1048]
     Open		    on
     PortBlocksUseCompactNotation off
@@ -1283,20 +1271,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "104"
+    SIDHighWatermark	    "106"
     Block {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "92"
       Position		      [30, -105, 60, -75]
       ZOrder		      16
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant1"
-      SID		      "97"
-      Position		      [30, 25, 60, 55]
-      ZOrder		      21
     }
     Block {
       BlockType		      Reference
@@ -1408,15 +1389,14 @@ Model {
       DisplayOption	      "bar"
     }
     Block {
-      BlockType		      DiscretePulseGenerator
-      Name		      "Pulse\nGenerator"
-      SID		      "96"
-      Ports		      [0, 1]
-      Position		      [30, -46, 60, -14]
-      ZOrder		      20
-      PulseType		      "Time based"
-      Period		      "0.01"
-      PulseWidth	      "50"
+      BlockType		      Constant
+      Name		      "Position"
+      SID		      "3"
+      Position		      [30, 232, 85, 278]
+      ZOrder		      -4
+      BackgroundColor	      "red"
+      Value		      "0"
+      OutDataTypeStr	      "double"
     }
     Block {
       BlockType		      Reference
@@ -1907,6 +1887,22 @@ Model {
       }
     }
     Block {
+      BlockType		      Constant
+      Name		      "Steper_Step"
+      SID		      "106"
+      Position		      [30, -45, 60, -15]
+      ZOrder		      27
+      Value		      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Stepper_Dir"
+      SID		      "97"
+      Position		      [30, 25, 60, 55]
+      ZOrder		      21
+      Value		      "0"
+    }
+    Block {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "95"
@@ -2238,16 +2234,6 @@ Model {
       autorestart	      off
       dynamicfilemode	      off
       maxwritefilesize	      "512*1024^2"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "myVar"
-      SID		      "3"
-      Position		      [30, 232, 85, 278]
-      ZOrder		      -4
-      BackgroundColor	      "red"
-      Value		      "0"
-      OutDataTypeStr	      "double"
     }
     Block {
       BlockType		      Reference
@@ -2749,7 +2735,7 @@ Model {
     }
     Line {
       ZOrder		      48
-      SrcBlock		      "myVar"
+      SrcBlock		      "Position"
       SrcPort		      1
       DstBlock		      "gain"
       DstPort		      1
@@ -2770,15 +2756,15 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      56
-      SrcBlock		      "Pulse\nGenerator"
+      ZOrder		      61
+      SrcBlock		      "Steper_Step"
       SrcPort		      1
       DstBlock		      "Q4 DO "
       DstPort		      2
     }
     Line {
       ZOrder		      57
-      SrcBlock		      "Constant1"
+      SrcBlock		      "Stepper_Dir"
       SrcPort		      1
       Points		      [53, 0; 0, -50]
       DstBlock		      "Q4 DO "
@@ -2831,7 +2817,7 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "motor_param_test"
+    name		    "model"
     created		    "13-Mar-2012 16:28:53"
     isLibrary		    0
     sfVersion		    80000012

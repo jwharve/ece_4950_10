@@ -8,4 +8,6 @@ tg.start;
 
 tg.setparam(tg.getparamid('Switch','Value'),sim)
 
+keyboard;
+
 tg.stop;
