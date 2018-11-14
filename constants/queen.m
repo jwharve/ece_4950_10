@@ -1,6 +1,6 @@
 function ret = queen(varargin)
-us = 9;
-them = 10;
+us = 5;
+them = 11;
 
 if nargin ~= 1
     ret = [us; them];

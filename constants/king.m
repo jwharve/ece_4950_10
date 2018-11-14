@@ -1,6 +1,6 @@
 function ret = king(varargin)
-us = 3;
-them = 4;
+us = 2;
+them = 8;
 
 if nargin ~= 1
     ret = [us; them];

@@ -1,6 +1,6 @@
 function ret = pawn(varargin)
-us = 7;
-them = 8;
+us = 4;
+them = 10;
 
 if nargin ~= 1
     ret = [us; them];

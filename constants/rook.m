@@ -1,5 +1,5 @@
 function ret = rook(varargin)
-us = 11;
+us = 6;
 them = 12;
 
 if nargin ~= 1

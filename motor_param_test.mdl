@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.96"
+    ComputedModelVersion    "1.99"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -152,7 +152,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
 	ZoomFactor		[1.0]
-	Offset			[-198.73029914794188, -259.55465900643918]
+	Offset			[-159.36255427505091, -219.24799401482232]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -186,9 +186,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 09 13:52:08 2018"
-  RTWModifiedTimeStamp	  463672286
-  ModelVersionFormat	  "1.%<AutoIncrement:96>"
+  LastModifiedDate	  "Tue Nov 13 18:58:24 2018"
+  RTWModifiedTimeStamp	  464029258
+  ModelVersionFormat	  "1.%<AutoIncrement:99>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1283,7 +1283,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "101"
+    SIDHighWatermark	    "104"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1910,7 +1910,7 @@ Model {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "95"
-      Position		      [625, -48, 660, -12]
+      Position		      [730, -48, 765, -12]
       ZOrder		      19
     }
     Block {
@@ -1963,7 +1963,7 @@ Model {
       Name		      "analog read\n"
       SID		      "101"
       Ports		      [1]
-      Position		      [450, -176, 535, -134]
+      Position		      [625, -176, 710, -134]
       ZOrder		      25
       LibraryVersion	      "1.1893"
       SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
@@ -2246,7 +2246,7 @@ Model {
       Position		      [30, 232, 85, 278]
       ZOrder		      -4
       BackgroundColor	      "red"
-      Value		      "180"
+      Value		      "0"
       OutDataTypeStr	      "double"
     }
     Block {
@@ -2770,13 +2770,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      55
-      SrcBlock		      "yuio"
-      SrcPort		      1
-      DstBlock		      "analog read\n"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      56
       SrcBlock		      "Pulse\nGenerator"
       SrcPort		      1
@@ -2790,6 +2783,14 @@ Model {
       Points		      [53, 0; 0, -50]
       DstBlock		      "Q4 DO "
       DstPort		      3
+    }
+    Line {
+      ZOrder		      60
+      SrcBlock		      "yuio"
+      SrcPort		      1
+      Points		      [40, 0; 0, 10; 175, 0; 0, -10]
+      DstBlock		      "analog read\n"
+      DstPort		      1
     }
     Annotation {
       SID		      "82"

@@ -1,6 +1,6 @@
 function ret = knight(varargin)
-us = 5;
-them = 6;
+us = 3;
+them = 9;
 
 if nargin ~= 1
     ret = [us; them];

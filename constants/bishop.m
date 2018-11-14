@@ -1,6 +1,6 @@
 function ret = bishop(varargin)
 us = 1;
-them = 2;
+them = 7;
 
 if nargin ~= 1
     ret = [us; them];
