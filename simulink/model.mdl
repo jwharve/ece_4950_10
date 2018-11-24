@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.124"
+    ComputedModelVersion    "1.133"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -37,7 +37,7 @@ Model {
     HasTerminateEvent	    0
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 9
+    NumExternalFileReferences 15
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/Data Display"
@@ -76,8 +76,20 @@ Model {
     }
     ExternalFileReference {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
+      Path		      "model/Real motor/dc out"
+      SID		      "121"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/error signal"
       SID		      "32"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "xpcquanserlib/A//D/Q4 AD"
+      Path		      "model/load_cell"
+      SID		      "204"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -90,6 +102,30 @@ Model {
       Reference		      "slrtlib/Displays and\nLogging/Scope "
       Path		      "model/setpoint"
       SID		      "43"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "slrtlib/Displays and\nLogging/Scope "
+      Path		      "model/setpoint1"
+      SID		      "223"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+      Path		      "model/stepper_down/Detect Rise Positive"
+      SID		      "211"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+      Path		      "model/stepper_out/Detect Rise Positive"
+      SID		      "144"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+      Path		      "model/timer/Detect Rise Positive"
+      SID		      "192"
       Type		      "LIBRARY_BLOCK"
     }
     OrderedModelArguments   1
@@ -120,7 +156,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [953.0, 0.0, 974.0, 1047.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -144,9 +180,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1882.0, 875.0]
-	ZoomFactor		[0.8]
-	Offset			[-533.38016822866507, -405.12188949440542]
+	Extents			[920.0, 866.0]
+	ZoomFactor		[0.5]
+	Offset			[-24.22176607117467, -832.74814106204576]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -166,7 +202,7 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAKwD///8AAAeAAAADpAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAKwD///8AAAO+AAADmwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
       "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAALt/////wAAAAAAAAAA/"
@@ -180,9 +216,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 14 16:57:36 2018"
-  RTWModifiedTimeStamp	  464115420
-  ModelVersionFormat	  "1.%<AutoIncrement:124>"
+  LastModifiedDate	  "Sat Nov 24 11:32:23 2018"
+  RTWModifiedTimeStamp	  464959932
+  ModelVersionFormat	  "1.%<AutoIncrement:133>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -338,7 +374,7 @@ Model {
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
 	  SaveFormat		  "Array"
-	  SignalLoggingSaveFormat "ModelDataLogs"
+	  SignalLoggingSaveFormat "Dataset"
 	  SaveOutput		  on
 	  SaveState		  off
 	  SignalLogging		  on
@@ -821,7 +857,7 @@ Model {
 	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
-		Dimension		19
+		Dimension		18
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"RemoveResetFunc"
@@ -840,7 +876,6 @@ Model {
 		Cell			"RemoveDisableFunc"
 		Cell			"MatFileLogging"
 		Cell			"GRTInterface"
-		Cell			"CombineOutputUpdateFcns"
 		PropName		"DisabledProps"
 	      }
 	      Description	      ""
@@ -1080,6 +1115,17 @@ Model {
       CoefficientInTFapproximation "inf"
     }
     Block {
+      BlockType		      DiscretePulseGenerator
+      PulseType		      "Sample based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Period		      "2"
+      PulseWidth	      "1"
+      PhaseDelay	      "0"
+      SampleTime	      "1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -1187,6 +1233,15 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      InputSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      ZeroCross		      on
+      SampleTime	      "-1"
+      RndMeth		      "Nearest"
+    }
+    Block {
       BlockType		      S-Function
       FunctionName	      "system"
       SFunctionModules	      "''"
@@ -1261,12 +1316,36 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
+    }
+    Block {
+      BlockType		      UnitDelay
+      InitialCondition	      "0"
+      InputProcessing	      "Inherited"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      CodeGenStateStorageClass "Auto"
+      HasFrameUpgradeWarning  on
     }
   }
   System {
     Name		    "model"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [953, 0, 1927, 1047]
     Open		    on
     PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
@@ -1279,15 +1358,15 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "80"
+    ZoomFactor		    "50"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "120"
+    SIDHighWatermark	    "223"
     Block {
       BlockType		      Reference
       Name		      "Data Display"
       SID		      "53"
       Ports		      [1]
-      Position		      [1260, 169, 1345, 211]
+      Position		      [1365, 169, 1450, 211]
       ZOrder		      -2
       LibraryVersion	      "1.1893"
       SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
@@ -1323,14 +1402,14 @@ Model {
       BlockType		      Derivative
       Name		      "Derivative1"
       SID		      "2"
-      Position		      [330, 320, 360, 350]
+      Position		      [435, 320, 465, 350]
       ZOrder		      -3
     }
     Block {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "55"
-      Position		      [1180, 165, 1210, 195]
+      Position		      [1285, 165, 1315, 195]
       ZOrder		      -5
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -1341,17 +1420,17 @@ Model {
       Name		      "Integrator1"
       SID		      "4"
       Ports		      [1, 1]
-      Position		      [345, 400, 375, 430]
+      Position		      [435, 395, 465, 425]
       ZOrder		      -6
     }
     Block {
       BlockType		      Gain
       Name		      "Kd"
       SID		      "5"
-      Position		      [375, 310, 430, 360]
+      Position		      [480, 310, 535, 360]
       ZOrder		      -7
       BackgroundColor	      "yellow"
-      Gain		      "3"
+      Gain		      "5"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1360,10 +1439,10 @@ Model {
       BlockType		      Gain
       Name		      "Ki"
       SID		      "6"
-      Position		      [390, 390, 450, 430]
+      Position		      [495, 390, 555, 430]
       ZOrder		      -8
       BackgroundColor	      "yellow"
-      Gain		      ".0025"
+      Gain		      "0.003"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1372,10 +1451,10 @@ Model {
       BlockType		      Gain
       Name		      "Kp"
       SID		      "7"
-      Position		      [360, 236, 415, 274]
+      Position		      [465, 236, 520, 274]
       ZOrder		      -9
       BackgroundColor	      "yellow"
-      Gain		      ".48"
+      Gain		      "0.1"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1385,7 +1464,7 @@ Model {
       Name		      "MATLAB Function"
       SID		      "117"
       Ports		      [1, 2]
-      Position		      [195, -311, 265, -264]
+      Position		      [210, -284, 280, -226]
       ZOrder		      36
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1519,7 +1598,7 @@ Model {
       Name		      "Mux"
       SID		      "54"
       Ports		      [3, 1]
-      Position		      [1140, 161, 1145, 199]
+      Position		      [1245, 161, 1250, 199]
       ZOrder		      -10
       ShowName		      off
       Inputs		      "3"
@@ -1529,10 +1608,10 @@ Model {
       BlockType		      Constant
       Name		      "Position"
       SID		      "3"
-      Position		      [30, 232, 85, 278]
+      Position		      [135, 232, 190, 278]
       ZOrder		      -4
       BackgroundColor	      "red"
-      Value		      "0"
+      Value		      "-10"
       OutDataTypeStr	      "double"
     }
     Block {
@@ -1540,7 +1619,7 @@ Model {
       Name		      "Q4 Cnt "
       SID		      "114"
       Ports		      [2]
-      Position		      [420, -314, 525, -256]
+      Position		      [335, -284, 440, -226]
       ZOrder		      33
       LibraryVersion	      "1.52"
       SourceBlock	      "xpcquanserlib/Counter/Q4 Cnt "
@@ -1561,7 +1640,7 @@ Model {
       Name		      "Q4 DI "
       SID		      "91"
       Ports		      [0, 1]
-      Position		      [435, -3, 535, 53]
+      Position		      [1305, -333, 1405, -277]
       ZOrder		      15
       LibraryVersion	      "1.52"
       SourceBlock	      "xpcquanserlib/Digital\nInput/Q4 DI "
@@ -1577,14 +1656,14 @@ Model {
       Name		      "Q4 DO "
       SID		      "90"
       Ports		      [4]
-      Position		      [250, -53, 355, 8]
+      Position		      [835, -258, 940, -197]
       ZOrder		      14
       LibraryVersion	      "1.52"
       SourceBlock	      "xpcquanserlib/Digital\nOutput/Q4 DO "
       SourceType	      "quanser_q4_do"
       SourceProductName	      "Simulink Real-Time"
       SourceProductBaseCode   "XP"
-      channel		      "[3 4 5 6]"
+      channel		      "[5 6 7 8]"
       reset		      "[1]"
       initValue		      "[0]"
       sampleTime	      ".0001"
@@ -1595,14 +1674,14 @@ Model {
       Name		      "Real motor"
       SID		      "8"
       Ports		      [1, 1]
-      Position		      [740, 484, 950, 556]
+      Position		      [845, 484, 1055, 556]
       ZOrder		      -11
       BackgroundColor	      "[0.501961, 0.501961, 0.250980]"
       RequestExecContextInheritance off
       Variant		      off
       System {
 	Name			"Real motor"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-7, 0, 967, 1047]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -1658,7 +1737,7 @@ Model {
 	  SourceType		  "quanser_q4_enc"
 	  SourceProductName	  "Simulink Real-Time"
 	  SourceProductBaseCode	  "XP"
-	  channel		  "2"
+	  channel		  "1"
 	  initialCount		  "[0]"
 	  prescale		  "[1]"
 	  quadrature		  "[4]"
@@ -1679,8 +1758,8 @@ Model {
 	  BackgroundColor	  "[0.501961, 0.501961, 0.250980]"
 	  ShowName		  off
 	  InputPortMap		  "u0"
-	  UpperLimit		  "10"
-	  LowerLimit		  "-10"
+	  UpperLimit		  "8"
+	  LowerLimit		  "-8"
 	}
 	Block {
 	  BlockType		  Gain
@@ -1695,6 +1774,43 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "dc out"
+	  SID			  "121"
+	  Ports			  [1]
+	  Position		  [295, 249, 380, 291]
+	  ZOrder		  1
+	  LibraryVersion	  "1.1893"
+	  SourceBlock		  "slrtlib/Displays and\nLogging/Scope "
+	  SourceType		  "xpcscopeblock"
+	  SourceProductName	  "Simulink Real-Time"
+	  SourceProductBaseCode	  "XP"
+	  ContentPreviewEnabled	  off
+	  scopeno		  "8"
+	  scopetype		  "Target"
+	  autostart		  on
+	  viewmode		  "Graphical rolling"
+	  formatstr		  "'%15.6f'"
+	  grid			  on
+	  ylimits		  "[-10, 10]"
+	  nosamples		  "500"
+	  noprepostsamples	  "0"
+	  interleave		  "10"
+	  triggermode		  "FreeRun"
+	  triggersignal		  "1"
+	  trigsignalfromport	  off
+	  triggerlevel		  "0.0"
+	  triggerslope		  "Either"
+	  triggerscope		  "1"
+	  triggersample		  "0"
+	  filename		  "data.dat"
+	  mode			  "Lazy"
+	  writesize		  "512"
+	  autorestart		  off
+	  dynamicfilemode	  off
+	  maxwritefilesize	  "512*1024^2"
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "position\nin degrees"
 	  SID			  "15"
@@ -1706,8 +1822,19 @@ Model {
 	  ZOrder		  1
 	  SrcBlock		  "Saturation"
 	  SrcPort		  1
-	  DstBlock		  "Channel 0 -Control signal to \nmotor through amplifier "
-	  DstPort		  1
+	  Points		  [39, 0; 0, 2]
+	  Branch {
+	    ZOrder		    18
+	    Points		    [6, 0; 0, -2]
+	    DstBlock		    "Channel 0 -Control signal to \nmotor through amplifier "
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    17
+	    Points		    [0, 198]
+	    DstBlock		    "dc out"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  ZOrder		  2
@@ -1724,7 +1851,7 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  4
+	  ZOrder		  23
 	  SrcBlock		  "unfiltered \ncontrol input"
 	  SrcPort		  1
 	  DstBlock		  "Saturation"
@@ -1744,7 +1871,7 @@ Model {
 	  " and Gain blocks to\nmatch the range of the Desired Trajectory input.\n\nIn this example need to convert the encode"
 	  "r counts to a value between 0 and COUNTS_PER_REV. \nFurther, the count obtained for that revolution needs to be sca"
 	  "led to an angle feedback (between\n0 and 360 degrees), which is the purpose of the Gain block."
-	  Position		  [209, 176, 653, 274]
+	  Position		  [205, 332, 649, 430]
 	  InternalMargins	  [0, 0, 0, 0]
 	  BackgroundColor	  "orange"
 	  DropShadow		  on
@@ -1757,14 +1884,14 @@ Model {
       Name		      "Simulated motor"
       SID		      "16"
       Ports		      [1, 1]
-      Position		      [775, 224, 940, 296]
+      Position		      [880, 224, 1045, 296]
       ZOrder		      -12
       BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
       RequestExecContextInheritance off
       Variant		      off
       System {
 	Name			"Simulated motor"
-	Location		[-8, -8, 1928, 1048]
+	Location		[953, 0, 1927, 1047]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -2045,41 +2172,10 @@ Model {
       }
     }
     Block {
-      BlockType		      Constant
-      Name		      "Stepper1_Dir"
-      SID		      "110"
-      Position		      [30, -145, 60, -115]
-      ZOrder		      31
-      Value		      "0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Stepper1_Step"
-      SID		      "111"
-      Position		      [30, -95, 60, -65]
-      ZOrder		      32
-      Value		      "0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Stepper2_Dir"
-      SID		      "97"
-      Position		      [30, 25, 60, 55]
-      ZOrder		      21
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Stepper2_Step"
-      SID		      "106"
-      Position		      [30, 75, 60, 105]
-      ZOrder		      27
-      Value		      "0"
-    }
-    Block {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "95"
-      Position		      [725, 7, 760, 43]
+      Position		      [1485, -323, 1520, -287]
       ZOrder		      19
     }
     Block {
@@ -2087,7 +2183,7 @@ Model {
       Name		      "Sum1"
       SID		      "30"
       Ports		      [2, 1]
-      Position		      [205, 245, 225, 265]
+      Position		      [310, 245, 330, 265]
       ZOrder		      -13
       ShowName		      off
       IconShape		      "round"
@@ -2105,7 +2201,7 @@ Model {
       Name		      "Sum4"
       SID		      "31"
       Ports		      [3, 1]
-      Position		      [440, 240, 470, 270]
+      Position		      [545, 240, 575, 270]
       ZOrder		      -14
       ShowName		      off
       IconShape		      "round"
@@ -2118,7 +2214,7 @@ Model {
       BlockType		      Constant
       Name		      "Switch"
       SID		      "1"
-      Position		      [825, 365, 875, 410]
+      Position		      [930, 365, 980, 410]
       ZOrder		      -1
       BlockRotation	      270
       BlockMirror	      on
@@ -2128,11 +2224,25 @@ Model {
       Value		      "0"
     }
     Block {
+      BlockType		      Terminator
+      Name		      "Terminator"
+      SID		      "205"
+      Position		      [1200, -335, 1220, -315]
+      ZOrder		      43
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Terminator1"
+      SID		      "222"
+      Position		      [295, -140, 315, -120]
+      ZOrder		      45
+    }
+    Block {
       BlockType		      Reference
       Name		      "error signal"
       SID		      "32"
       Ports		      [1]
-      Position		      [1260, 104, 1345, 146]
+      Position		      [1365, 104, 1450, 146]
       ZOrder		      -15
       LibraryVersion	      "1.1893"
       SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
@@ -2168,7 +2278,7 @@ Model {
       BlockType		      Gain
       Name		      "gain"
       SID		      "33"
-      Position		      [135, 240, 165, 270]
+      Position		      [240, 240, 270, 270]
       ZOrder		      -16
       NamePlacement	      "alternate"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -2184,7 +2294,7 @@ Model {
       Name		      "input side switching logic"
       SID		      "34"
       Ports		      [2, 2]
-      Position		      [560, 239, 660, 301]
+      Position		      [665, 239, 765, 301]
       ZOrder		      -17
       BackgroundColor	      "orange"
       RequestExecContextInheritance off
@@ -2336,10 +2446,26 @@ Model {
     }
     Block {
       BlockType		      Reference
+      Name		      "load_cell"
+      SID		      "204"
+      Ports		      [0, 1]
+      Position		      [1030, -353, 1130, -297]
+      ZOrder		      42
+      LibraryVersion	      "1.52"
+      SourceBlock	      "xpcquanserlib/A//D/Q4 AD"
+      SourceType	      "quanser_q4_ad"
+      SourceProductName	      "Simulink Real-Time"
+      SourceProductBaseCode   "XP"
+      channel		      "[1]"
+      sampleTime	      "0.001"
+      slot		      "-1"
+    }
+    Block {
+      BlockType		      Reference
       Name		      "motor position"
       SID		      "42"
       Ports		      [1]
-      Position		      [1260, 414, 1345, 456]
+      Position		      [1365, 414, 1450, 456]
       ZOrder		      -18
       LibraryVersion	      "1.1893"
       SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
@@ -2373,9 +2499,9 @@ Model {
     }
     Block {
       BlockType		      Constant
-      Name		      "oc"
+      Name		      "o_c"
       SID		      "115"
-      Position		      [40, -300, 70, -270]
+      Position		      [130, -270, 160, -240]
       ZOrder		      34
       Value		      "0"
     }
@@ -2384,7 +2510,7 @@ Model {
       Name		      "setpoint"
       SID		      "43"
       Ports		      [1]
-      Position		      [1260, 39, 1345, 81]
+      Position		      [1365, 39, 1450, 81]
       ZOrder		      -19
       LibraryVersion	      "1.1893"
       SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
@@ -2417,11 +2543,560 @@ Model {
       maxwritefilesize	      "512*1024^2"
     }
     Block {
+      BlockType		      Reference
+      Name		      "setpoint1"
+      SID		      "223"
+      Ports		      [1]
+      Position		      [1170, -246, 1255, -204]
+      ZOrder		      46
+      LibraryVersion	      "1.1893"
+      SourceBlock	      "slrtlib/Displays and\nLogging/Scope "
+      SourceType	      "xpcscopeblock"
+      SourceProductName	      "Simulink Real-Time"
+      SourceProductBaseCode   "XP"
+      ContentPreviewEnabled   off
+      scopeno		      "4"
+      scopetype		      "Target"
+      autostart		      on
+      viewmode		      "Graphical rolling"
+      formatstr		      "'%15.6f'"
+      grid		      on
+      ylimits		      "[-180,180]"
+      nosamples		      "500"
+      noprepostsamples	      "0"
+      interleave	      "10"
+      triggermode	      "FreeRun"
+      triggersignal	      "1"
+      trigsignalfromport      off
+      triggerlevel	      "0.0"
+      triggerslope	      "Either"
+      triggerscope	      "1"
+      triggersample	      "0"
+      filename		      "data.dat"
+      mode		      "Lazy"
+      writesize		      "512"
+      autorestart	      off
+      dynamicfilemode	      off
+      maxwritefilesize	      "512*1024^2"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "stepper_down"
+      SID		      "209"
+      Ports		      [0, 2]
+      Position		      [585, -211, 655, -144]
+      ZOrder		      44
+      BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"stepper_down"
+	Location		[953, 0, 1927, 1047]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"125"
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "210"
+	  Position		  [580, 95, 610, 125]
+	  ZOrder		  16
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive"
+	  SID			  "211"
+	  Ports			  [1, 1]
+	  Position		  [325, -5, 385, 45]
+	  ZOrder		  9
+	  LibraryVersion	  "1.401"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  SourceProductName	  "Simulink"
+	  SourceProductBaseCode	  "SL"
+	  ContentPreviewEnabled	  off
+	  vinit			  "0"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  OutDataTypeStr	  "uint8"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "212"
+	  Ports			  [2, 1]
+	  Position		  [505, 80, 535, 115]
+	  ZOrder		  50
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product1"
+	  SID			  "213"
+	  Ports			  [2, 1]
+	  Position		  [580, -18, 610, 18]
+	  ZOrder		  53
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "214"
+	  Ports			  [2, 1]
+	  Position		  [460, 12, 490, 43]
+	  ZOrder		  44
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay"
+	  SID			  "215"
+	  Position		  [440, 83, 480, 117]
+	  ZOrder		  52
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enable"
+	  SID			  "216"
+	  Position		  [510, 145, 540, 175]
+	  ZOrder		  51
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "my_dir"
+	  SID			  "217"
+	  Position		  [655, 225, 685, 255]
+	  ZOrder		  13
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "step_pulse"
+	  SID			  "218"
+	  Ports			  [0, 1]
+	  Position		  [505, -26, 535, 6]
+	  ZOrder		  10
+	  PulseType		  "Time based"
+	  Period		  "0.01"
+	  PulseWidth		  "50"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "switch"
+	  SID			  "219"
+	  Position		  [635, 35, 685, 75]
+	  ZOrder		  3
+	  Threshold		  "5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "step"
+	  SID			  "220"
+	  Position		  [860, 48, 890, 62]
+	  ZOrder		  -13
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "dir"
+	  SID			  "221"
+	  Position		  [860, 233, 890, 247]
+	  ZOrder		  4
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "my_dir"
+	  SrcPort		  1
+	  DstBlock		  "dir"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "switch"
+	  SrcPort		  1
+	  DstBlock		  "step"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  Points		  [54, 0; 0, 25]
+	  Branch {
+	    ZOrder		    5
+	    Points		    [0, 35]
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    6
+	    DstBlock		    "switch"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "enable"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -55]
+	  Branch {
+	    ZOrder		    8
+	    DstBlock		    "Product1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    9
+	    DstBlock		    "Product"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Unit Delay"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  11
+	  SrcBlock		  "Unit Delay"
+	  SrcPort		  1
+	  Points		  [-9, 0; 0, -65]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "step_pulse"
+	  SrcPort		  1
+	  Points		  [13, 0]
+	  Branch {
+	    ZOrder		    13
+	    DstBlock		    "Product1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    14
+	    Points		    [0, -29; -243, 0]
+	    DstBlock		    "Detect Rise\nPositive"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  15
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  DstBlock		  "switch"
+	  DstPort		  3
+	}
+	Line {
+	  ZOrder		  16
+	  SrcBlock		  "Product1"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  DstBlock		  "switch"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "stepper_out"
+      SID		      "122"
+      Ports		      [0, 2]
+      Position		      [590, -341, 660, -274]
+      ZOrder		      37
+      BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"stepper_out"
+	Location		[953, 0, 1927, 1047]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"125"
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "153"
+	  Position		  [580, 95, 610, 125]
+	  ZOrder		  16
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive"
+	  SID			  "144"
+	  Ports			  [1, 1]
+	  Position		  [325, -5, 385, 45]
+	  ZOrder		  9
+	  LibraryVersion	  "1.401"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  SourceProductName	  "Simulink"
+	  SourceProductBaseCode	  "SL"
+	  ContentPreviewEnabled	  off
+	  vinit			  "0"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  OutDataTypeStr	  "uint8"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "167"
+	  Ports			  [2, 1]
+	  Position		  [505, 80, 535, 115]
+	  ZOrder		  50
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product1"
+	  SID			  "208"
+	  Ports			  [2, 1]
+	  Position		  [580, -18, 610, 18]
+	  ZOrder		  53
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "159"
+	  Ports			  [2, 1]
+	  Position		  [460, 12, 490, 43]
+	  ZOrder		  44
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay"
+	  SID			  "169"
+	  Position		  [440, 83, 480, 117]
+	  ZOrder		  52
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enable"
+	  SID			  "168"
+	  Position		  [510, 145, 540, 175]
+	  ZOrder		  51
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "my_dir"
+	  SID			  "147"
+	  Position		  [655, 225, 685, 255]
+	  ZOrder		  13
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "step_pulse"
+	  SID			  "137"
+	  Ports			  [0, 1]
+	  Position		  [505, -26, 535, 6]
+	  ZOrder		  10
+	  PulseType		  "Time based"
+	  Period		  "0.01"
+	  PulseWidth		  "50"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "switch"
+	  SID			  "138"
+	  Position		  [635, 35, 685, 75]
+	  ZOrder		  3
+	  Threshold		  "5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "step"
+	  SID			  "135"
+	  Position		  [860, 48, 890, 62]
+	  ZOrder		  -13
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "dir"
+	  SID			  "139"
+	  Position		  [860, 233, 890, 247]
+	  ZOrder		  4
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  36
+	  SrcBlock		  "my_dir"
+	  SrcPort		  1
+	  DstBlock		  "dir"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  69
+	  SrcBlock		  "switch"
+	  SrcPort		  1
+	  DstBlock		  "step"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  78
+	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  83
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  Points		  [54, 0; 0, 25]
+	  Branch {
+	    ZOrder		    95
+	    Points		    [0, 35]
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    94
+	    DstBlock		    "switch"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  93
+	  SrcBlock		  "enable"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -55]
+	  Branch {
+	    ZOrder		    117
+	    DstBlock		    "Product1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    116
+	    DstBlock		    "Product"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  102
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Unit Delay"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  103
+	  SrcBlock		  "Unit Delay"
+	  SrcPort		  1
+	  Points		  [-9, 0; 0, -65]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  104
+	  SrcBlock		  "step_pulse"
+	  SrcPort		  1
+	  Points		  [13, 0]
+	  Branch {
+	    ZOrder		    112
+	    DstBlock		    "Product1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    111
+	    Points		    [0, -29; -243, 0]
+	    DstBlock		    "Detect Rise\nPositive"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  105
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  DstBlock		  "switch"
+	  DstPort		  3
+	}
+	Line {
+	  ZOrder		  113
+	  SrcBlock		  "Product1"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  DstBlock		  "switch"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "switching logic"
       SID		      "44"
       Ports		      [3, 1]
-      Position		      [1050, 364, 1175, 506]
+      Position		      [1155, 364, 1280, 506]
       ZOrder		      -20
       BackgroundColor	      "orange"
       RequestExecContextInheritance off
@@ -2432,7 +3107,7 @@ Model {
       }
       System {
 	Name			"switching logic"
-	Location		[-8, -8, 1928, 1048]
+	Location		[953, 0, 1927, 1047]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -2596,10 +3271,206 @@ Model {
       }
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "timer"
+      SID		      "190"
+      Ports		      [0, 1]
+      Position		      [145, -164, 215, -96]
+      ZOrder		      41
+      BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"timer"
+	Location		[953, 0, 1927, 1047]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"125"
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive"
+	  SID			  "192"
+	  Ports			  [1, 1]
+	  Position		  [325, -5, 385, 45]
+	  ZOrder		  9
+	  LibraryVersion	  "1.401"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  SourceProductName	  "Simulink"
+	  SourceProductBaseCode	  "SL"
+	  ContentPreviewEnabled	  off
+	  vinit			  "0"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  OutDataTypeStr	  "uint8"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "193"
+	  Ports			  [2, 1]
+	  Position		  [505, 80, 535, 115]
+	  ZOrder		  50
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\nOperator"
+	  SID			  "202"
+	  Ports			  [2, 1]
+	  Position		  [640, 37, 670, 68]
+	  ZOrder		  53
+	  Operator		  "<="
+	  InputSameDT		  off
+	  OutDataTypeStr	  "boolean"
+	  RndMeth		  "Simplest"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum of\nElements"
+	  SID			  "194"
+	  Ports			  [2, 1]
+	  Position		  [460, 12, 490, 43]
+	  ZOrder		  44
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay"
+	  SID			  "195"
+	  Position		  [440, 83, 480, 117]
+	  ZOrder		  52
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "clock"
+	  SID			  "198"
+	  Ports			  [0, 1]
+	  Position		  [265, 4, 295, 36]
+	  ZOrder		  10
+	  PulseType		  "Time based"
+	  Period		  "0.01"
+	  PulseWidth		  "50"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "delay_ticks"
+	  SID			  "203"
+	  Position		  [565, -35, 595, -5]
+	  ZOrder		  54
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enable"
+	  SID			  "196"
+	  Position		  [510, 145, 540, 175]
+	  ZOrder		  51
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "done"
+	  SID			  "200"
+	  Position		  [725, 48, 755, 62]
+	  ZOrder		  -13
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  15
+	  SrcBlock		  "Relational\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "done"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcPort		  1
+	  DstBlock		  "Sum of\nElements"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "Sum of\nElements"
+	  SrcPort		  1
+	  Points		  [54, 0; 0, 30]
+	  Branch {
+	    ZOrder		    18
+	    Points		    [0, 30]
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    17
+	    DstBlock		    "Relational\nOperator"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "enable"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Unit Delay"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  "Unit Delay"
+	  SrcPort		  1
+	  Points		  [-9, 0; 0, -65]
+	  DstBlock		  "Sum of\nElements"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  14
+	  SrcBlock		  "clock"
+	  SrcPort		  1
+	  DstBlock		  "Detect Rise\nPositive"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  19
+	  SrcBlock		  "delay_ticks"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 65]
+	  DstBlock		  "Relational\nOperator"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
       BlockType		      Outport
       Name		      "setpoint_Out"
       SID		      "77"
-      Position		      [935, 53, 965, 67]
+      Position		      [1040, 53, 1070, 67]
       ZOrder		      -21
       IconDisplay	      "Port number"
     }
@@ -2607,7 +3478,7 @@ Model {
       BlockType		      Outport
       Name		      "errorSignal_Out"
       SID		      "78"
-      Position		      [935, 118, 965, 132]
+      Position		      [1040, 118, 1070, 132]
       ZOrder		      -22
       Port		      "2"
       IconDisplay	      "Port number"
@@ -2616,7 +3487,7 @@ Model {
       BlockType		      Outport
       Name		      "motorPos_Out"
       SID		      "79"
-      Position		      [1285, 363, 1315, 377]
+      Position		      [1390, 363, 1420, 377]
       ZOrder		      -23
       Port		      "3"
       IconDisplay	      "Port number"
@@ -2647,7 +3518,6 @@ Model {
       ZOrder		      4
       SrcBlock		      "Integrator1"
       SrcPort		      1
-      Points		      [-5, 0]
       DstBlock		      "Ki"
       DstPort		      1
     }
@@ -2829,7 +3699,7 @@ Model {
 	}
 	Branch {
 	  ZOrder		  35
-	  Points		  [0, 160]
+	  Points		  [0, 155]
 	  DstBlock		  "Integrator1"
 	  DstPort		  1
 	}
@@ -2876,30 +3746,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      102
-      SrcBlock		      "Stepper2_Dir"
-      SrcPort		      1
-      Points		      [45, 0; 0, -55]
-      DstBlock		      "Q4 DO "
-      DstPort		      3
-    }
-    Line {
-      ZOrder		      103
-      SrcBlock		      "Stepper1_Dir"
-      SrcPort		      1
-      Points		      [98, 0; 0, 85]
-      DstBlock		      "Q4 DO "
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      115
-      SrcBlock		      "Stepper1_Step"
-      SrcPort		      1
-      Points		      [54, 0; 0, 50]
-      DstBlock		      "Q4 DO "
-      DstPort		      2
-    }
-    Line {
       ZOrder		      119
       SrcBlock		      "MATLAB Function"
       SrcPort		      1
@@ -2910,30 +3756,166 @@ Model {
       ZOrder		      120
       SrcBlock		      "MATLAB Function"
       SrcPort		      2
-      Points		      [68, 0; 0, 5]
       DstBlock		      "Q4 Cnt "
       DstPort		      2
     }
     Line {
       ZOrder		      121
-      SrcBlock		      "oc"
+      SrcBlock		      "o_c"
       SrcPort		      1
       DstBlock		      "MATLAB Function"
       DstPort		      1
     }
     Line {
-      ZOrder		      122
-      SrcBlock		      "Stepper2_Step"
+      ZOrder		      128
+      SrcBlock		      "stepper_out"
       SrcPort		      1
-      Points		      [26, 0; 0, -90]
+      Points		      [83, 0; 0, 75]
+      DstBlock		      "Q4 DO "
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      129
+      SrcBlock		      "stepper_out"
+      SrcPort		      2
+      Points		      [39, 0; 0, 55]
+      DstBlock		      "Q4 DO "
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      135
+      SrcBlock		      "stepper_down"
+      SrcPort		      1
+      Points		      [110, 0; 0, -25]
+      DstBlock		      "Q4 DO "
+      DstPort		      3
+    }
+    Line {
+      ZOrder		      134
+      SrcBlock		      "stepper_down"
+      SrcPort		      2
+      Points		      [160, 0]
       DstBlock		      "Q4 DO "
       DstPort		      4
+    }
+    Line {
+      ZOrder		      133
+      SrcBlock		      "load_cell"
+      SrcPort		      1
+      Points		      [11, 0]
+      Branch {
+	ZOrder			138
+	Points			[0, 100]
+	DstBlock		"setpoint1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			137
+	DstBlock		"Terminator"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      136
+      SrcBlock		      "timer"
+      SrcPort		      1
+      DstBlock		      "Terminator1"
+      DstPort		      1
+    }
+    Annotation {
+      SID		      "207"
+      Position		      [1009, -432, 1264, -170]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      ForegroundColor	      "[0.901961, 0.901961, 1.000000]"
+      BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
+      DropShadow	      on
+      AnnotationType	      "area_annotation"
+      ZOrder		      140
+      FontSize		      12
+    }
+    Annotation {
+      SID		      "189"
+      Position		      [100, -431, 498, -66]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      ForegroundColor	      "[0.901961, 0.901961, 1.000000]"
+      BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
+      DropShadow	      on
+      AnnotationType	      "area_annotation"
+      ZOrder		      141
+      FontSize		      12
+    }
+    Annotation {
+      SID		      "188"
+      Position		      [574, -431, 972, -121]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      ForegroundColor	      "[0.901961, 0.901961, 1.000000]"
+      BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
+      DropShadow	      on
+      AnnotationType	      "area_annotation"
+      ZOrder		      142
+      FontSize		      12
+    }
+    Annotation {
+      SID		      "187"
+      Position		      [1294, -407, 1540, -244]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      ForegroundColor	      "[0.901961, 0.901961, 1.000000]"
+      BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
+      DropShadow	      on
+      AnnotationType	      "area_annotation"
+      ZOrder		      143
+      FontSize		      12
+    }
+    Annotation {
+      SID		      "186"
+      Position		      [117, -18, 1495, 637]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      ForegroundColor	      "[0.901961, 0.901961, 1.000000]"
+      BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
+      DropShadow	      on
+      AnnotationType	      "area_annotation"
+      ZOrder		      144
+      FontSize		      12
+    }
+    Annotation {
+      SID		      "170"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind"
+      "ent:0; text-indent:0px;\"><span style=\" font-size:26px; color:#ffffff;\">E-STOP</span></p></body></html>"
+      Position		      [1382, -399, 1485, -360]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      BackgroundColor	      "black"
+      Interpreter	      "rich"
     }
     Annotation {
       SID		      "82"
       Name		      "Adjust these gains and observe the change of the \nmotor response on the Error and Motor Position\n"
       "plots."
-      Position		      [261, 469, 484, 507]
+      Position		      [366, 469, 589, 507]
       InternalMargins	      [0, 0, 0, 0]
       BackgroundColor	      "yellow"
       DropShadow	      on
@@ -2943,7 +3925,7 @@ Model {
       SID		      "83"
       Name		      "First, test the control inputs on the simulated motor and \nadjust gains according to the response."
       " Then, flip the switch and\ntest with the real motor in the loop"
-      Position		      [261, 91, 546, 129]
+      Position		      [366, 91, 651, 129]
       InternalMargins	      [0, 0, 0, 0]
       BackgroundColor	      "yellow"
       DropShadow	      on
@@ -2952,11 +3934,79 @@ Model {
     Annotation {
       SID		      "84"
       Name		      "1 - Use simulated motor\n0 - Use real motor"
-      Position		      [884, 374, 992, 400]
+      Position		      [989, 374, 1097, 400]
       InternalMargins	      [0, 0, 0, 0]
       BackgroundColor	      "orange"
       DropShadow	      on
       ZOrder		      -3
+    }
+    Annotation {
+      SID		      "171"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind"
+      "ent:0; text-indent:0px;\"><span style=\" font-size:26px; color:#ffffff;\">STEPPERS</span></p></body></html>"
+      Position		      [687, -414, 850, -380]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      BackgroundColor	      "black"
+      Interpreter	      "rich"
+      ZOrder		      -1
+    }
+    Annotation {
+      SID		      "184"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind"
+      "ent:0; text-indent:0px;\"><span style=\" font-size:26px; color:#ffffff;\">Servo/Claw</span></p></body></html>"
+      Position		      [210, -414, 373, -380]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      BackgroundColor	      "black"
+      Interpreter	      "rich"
+      ZOrder		      -2
+    }
+    Annotation {
+      SID		      "185"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind"
+      "ent:0; text-indent:0px;\"><span style=\" font-size:26px; color:#ffffff;\">DC MOTOR</span></p></body></html>"
+      Position		      [705, -2, 868, 32]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      BackgroundColor	      "black"
+      Interpreter	      "rich"
+      ZOrder		      -3
+    }
+    Annotation {
+      SID		      "206"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind"
+      "ent:0; text-indent:0px;\"><span style=\" font-size:26px; color:#ffffff;\">LOAD CELL</span></p></body></html>"
+      Position		      [1045, -414, 1203, -380]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      on
+      FixedWidth	      on
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      BackgroundColor	      "black"
+      Interpreter	      "rich"
+      ZOrder		      -4
     }
   }
 }
@@ -2983,9 +4033,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
-    visible		    1
-    subviewS {
-    }
     ssIdHighWaterMark	    6
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

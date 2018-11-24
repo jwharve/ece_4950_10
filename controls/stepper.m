@@ -1,18 +1,22 @@
 function [] = stepper(tg,num,num_steps,dir)
 
 if num == 1
-    text1 = 'Stepper1_Dir';
-    text2 = 'Stepper1_Step';
+    name = 'stepper_out';
 else
-    text1 = 'Stepper2_Dir';
-    text2 = 'Stepper2_Step';
+    name = 'stepper_down';
 end
 
-tg.setparam(tg.getparamid(text1,'Value'),dir)
+% disable
+tg.setparam(tg.getparamid([name '/enable'],'Value'),0);
 
-for ii = 1:num_steps
-    tg.setparam(tg.getparamid(text2,'Value'),1)
-    tg.setparam(tg.getparamid(text2,'Value'),0)
-end
+% set direction
+tg.setparam(tg.getparamid([name '/my_dir'],'Value'),dir);
+
+% set num steps
+tg.setparam(tg.getparamid([name '/switch'],'Threshold'),num_steps);
+
+% enable
+tg.setparam(tg.getparamid([name '/enable'],'Value'),1);
+
 
 end
