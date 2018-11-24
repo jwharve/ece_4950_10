@@ -1,4 +1,4 @@
-function [] = arm_in_pos(tg,position)
+function [] = arm_done(tg,position)
 
 i = 0;
 thresh = 3;

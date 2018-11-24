@@ -1,0 +1,11 @@
+need to have the piece type inside of the improc file (used towards end)
+
+need to figure out what to do in case of error (just best guess or total failure)
+
+UPDATE:
+dist2step
+motorLoc
+cornerLoc
+arm_done
+move_piece (logic)
+pickup_steps
