@@ -1,4 +1,4 @@
-classdef control
+classdef Control
     properties
         tg
         angle
@@ -54,7 +54,7 @@ classdef control
             end
         end
         
-        function [] = stepOut(obj,step_pos)
+        function [] = step_out(obj,step_pos)
             if step_pos < obj.out_steps
                 dir = in;
                 num_steps =  obj.out_steps - step_pos;
@@ -76,7 +76,7 @@ classdef control
             obj.tg.setparam(obj.tg.getparamid('stepper_out/enable','Value'),1);
         end
         
-        function [] = stepDown(obj,state)
+        function [] = step_down(obj,state)
             % disable
             obj.tg.setparam(obj.tg.getparamid('stepper_down/enable','Value'),0);
             % set direction

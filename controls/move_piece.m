@@ -1,32 +1,37 @@
-function [] = move_piece(tg,ang1,dist1,ang2,dist2)
-global step_count;
+function [] = move_piece(bot,ang1,dist1,ang2,dist2)
 
 % move arm in
-stepper(tg,1,step_count,in);
+bot.step_out(0);
 % rotate arm to position
-arm_pos(tg,ang1);
-
+bot.arm_pos(ang1);
 % wait to stop moving
-stepper_done(tg,1,step_count);
-step_count = 0;
-arm_done(tg,ang1);
-
+bot.stepper_done;
+bot.arm_done;
 
 % move arm out to position
-stepper(tg,1,round(dist1*dist2step),out);
-stepper_done(tg,1,round(dist1*dist2step));
-step_count = round(dist1*dist2step);
-
+bot.step_out(round(dist1*dist2steps));
+bot.stepper_done;
 
 % pick up piece
-stepper(tg,2,pickup_steps,down);
-stepper_done(tg,2,pickup_steps);
-claw(tg,closed);
-stepper(tg,2,pickup_steps,up);
-stepper_done(tg,2,pickup_steps);
+bot.step_down(down);
+bot.claw(closed);
+bot.step_down(up);
 
 
-stepper(tg,1,step_count,in); % move arm in
-arm_pos(tg,ang2);
+% move arm in
+bot.step_out(0);
+% rotate arm to position
+bot.arm_pos(ang2);
+% wait to stop moving
+bot.stepper_done;
+bot.arm_done;
 
+% move arm out to position
+bot.step_out(round(dist2*obj.dist2steps));
+bot.stepper_done;
+
+% put down piece
+bot.step_down(down);
+bot.claw(open);
+bot.step_down(up);
 end

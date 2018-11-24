@@ -10,13 +10,7 @@ numSquares = 8;
 
 board = struct('piece',nan(numSquares,numSquares),'angle',nan(numSquares,numSquares),'dist',nan(numSquares,numSquares),'possible',nan(numSquares,numSquares,numPieces*2));% us then them
 
-
-if ~exist('tg') % check to see if the target is already built
-    rtwbuild('model');
-end
-% load and start model
-tg.load('model');
-tg.start;
+bot = Control;
 
 
 %% Identify Pieces
