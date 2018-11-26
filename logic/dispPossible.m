@@ -1,6 +1,7 @@
-function [] = dispPossible(board)
+function dispPossible
 global numSquares;
 global numPieces;
+global board;
 
 square_size = ceil(sqrt(numPieces));
 

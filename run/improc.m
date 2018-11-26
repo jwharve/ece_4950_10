@@ -1,4 +1,6 @@
-function board_ret = improc(board)
+function improc(gui)
+global board;
+
 
 %% setup
 
@@ -16,7 +18,7 @@ new = 1; % 1 means new picture
 
 if new == 1 % if you want to take a new picture
     % check to make sure that the webcam is plugged in
-    if isempty(find(strcmp(webcamlist,'HP USB Webcam'),1))
+    if isempty(find(strcmpi(webcamlist,'HP USB Webcam'),1))
         fprintf('HP USB Webcam not connected');
         return;
     end
@@ -47,7 +49,7 @@ if new == 1 % if you want to take a new picture
 else % if you want to use previous pictures
     % load the last picture by timestamp
     pics = ls('saved_pics/pics_*.mat');
-    load(pics(end,:));
+    load(pics(end,:),'with','without');
 end
 
 %% subtraction
@@ -170,11 +172,49 @@ for ii = 1:size(props,1)
             continue;
         end
         
-        board.piece(xInd,yInd) = queen(us);
+        if color == 'r' && marker == '^'
+            ind = strcmpi(gui.encodedPieces(:,1),'Red Triangle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'r' && marker == 's'
+            ind = strcmpi(gui.encodedPieces(:,1),'Red Square');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'r' && marker == 'o'
+            ind = strcmpi(gui.encodedPieces(:,1),'Red Circle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'g' && marker == '^'
+            ind = strcmpi(gui.encodedPieces(:,1),'Green Triangle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'g' && marker == 's'
+            ind = strcmpi(gui.encodedPieces(:,1),'Green Square');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'g' && marker == 'o'
+            ind = strcmpi(gui.encodedPieces(:,1),'Green Circle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'b' && marker == '^'
+            ind = strcmpi(gui.encodedPieces(:,1),'Blue Triangle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'b' && marker == 's'
+            ind = strcmpi(gui.encodedPieces(:,1),'Blue Square');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'b' && marker == 'o'
+            ind = strcmpi(gui.encodedPieces(:,1),'Blue Circle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'y' && marker == '^'
+            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Triangle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'y' && marker == 's'
+            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Square');
+            piece = retnum(gui.encodedPieces(ind,2));
+        elseif color == 'y' && marker == 'o'
+            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Circle');
+            piece = retnum(gui.encodedPieces(ind,2));
+        end
+        
+        board.piece(xInd,yInd) = piece;
         
         xa = motorLoc(1)-pieces(sel).centroid(1);
         ya = pieces(sel).centroid(2)-motorLoc(2);
-
+        
         % calculate angle
         angle = atand(xa/ya);
         board.angle(xInd,yInd) = angle;

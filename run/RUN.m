@@ -4,6 +4,7 @@ clearvars; close all; clc;
 
 global numPieces;
 global numSquares;
+global board;
 
 numPieces = 6;
 numSquares = 8;
@@ -12,14 +13,19 @@ connected = 0;
 
 board = struct('piece',nan(numSquares,numSquares),'angle',nan(numSquares,numSquares),'dist',nan(numSquares,numSquares),'possible',nan(numSquares,numSquares,numPieces*2));% us then them
 
+gui = GUI;
+
 if connected
     bot = Control;
 end
 
+while gui.ready == 0
+    drawnow
+end
 
 %% Identify Pieces
 if connected
-    board = improc(board);
+    improc(gui);
 end
 
 %% Generate Possible Moves
@@ -34,12 +40,12 @@ board.piece(3,3) = king(us);
 [locX, locY] = find(~isnan(board.piece));
 
 for ii = 1:size(locX,1)
-    board = genPossible(board,locX(ii),locY(ii));
+    genPossible(locX(ii),locY(ii));
 end
-board = remChecks(board);
+remChecks;
 
 
-dispPossible(board);
+dispPossible;
 
 %% Cleanup
 

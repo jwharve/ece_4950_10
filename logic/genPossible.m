@@ -1,6 +1,7 @@
-function board_ret = genPossible(board, i_x, i_y)
+function genPossible(i_x, i_y)
 global numSquares;
 global numPieces;
+global board;
 
 piece = board.piece(i_x,i_y);
 
@@ -210,6 +211,4 @@ elseif any(piece == rook)
         board.possible(ii,i_y,piece) = piece;
     end
 end
-
-board_ret = board;
 end
