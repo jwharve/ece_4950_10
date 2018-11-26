@@ -8,13 +8,19 @@ global numSquares;
 numPieces = 6;
 numSquares = 8;
 
+connected = 0;
+
 board = struct('piece',nan(numSquares,numSquares),'angle',nan(numSquares,numSquares),'dist',nan(numSquares,numSquares),'possible',nan(numSquares,numSquares,numPieces*2));% us then them
 
-bot = Control;
+if connected
+    bot = Control;
+end
 
 
 %% Identify Pieces
-board = improc(board);
+if connected
+    board = improc(board);
+end
 
 %% Generate Possible Moves
 % % random testing
@@ -22,6 +28,8 @@ board = improc(board);
 % for ii = 1:randi(numSquares^2)
 %     board.piece(x(ii),y(ii)) = randi(2*numPieces+1);
 % end
+
+board.piece(3,3) = king(us);
 
 [locX, locY] = find(~isnan(board.piece));
 
