@@ -1,3 +1,3 @@
 function ret = closed
-ret = 1;
+ret = 0;
 end

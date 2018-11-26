@@ -9,10 +9,11 @@ bot.stepper_done;
 bot.arm_done;
 
 % move arm out to position
-bot.step_out(round(dist1*dist2steps));
+bot.step_out(round(dist1*bot.dist2steps));
 bot.stepper_done;
 
 % pick up piece
+bot.claw(open);
 bot.step_down(down);
 bot.claw(closed);
 bot.step_down(up);
@@ -27,7 +28,7 @@ bot.stepper_done;
 bot.arm_done;
 
 % move arm out to position
-bot.step_out(round(dist2*obj.dist2steps));
+bot.step_out(round(dist2*bot.dist2steps));
 bot.stepper_done;
 
 % put down piece

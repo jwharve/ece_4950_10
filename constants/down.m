@@ -1,3 +1,3 @@
 function ret = down
-ret = 1;
+ret = 0;
 end
