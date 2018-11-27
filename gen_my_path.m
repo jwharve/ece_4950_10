@@ -1,1 +1,6 @@
-addpath('./constants/','./controls/','./GUI/','./logic/','./simulink/','./run/')
+addpath('constants')
+addpath('controls')
+addpath('GUI')
+addpath('logic')
+addpath('simulink')
+addpath('run')

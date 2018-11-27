@@ -54,7 +54,7 @@ classdef Control < handle
         end
         
         function claw(obj,state)
-            if state == open
+            if state == opened
                 obj.tg.setparam(obj.tg.getparamid('o_c','Value'),0)
             else
                 obj.tg.setparam(obj.tg.getparamid('o_c','Value'),1)
@@ -109,7 +109,7 @@ classdef Control < handle
             obj.step_out(0);
             obj.arm_pos(0);
             obj.step_down(up);
-            obj.claw(open)
+            obj.claw(opened)
             obj.stepper_done;
             obj.arm_done;
             obj.tg.stop;
