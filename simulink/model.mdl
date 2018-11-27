@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.152"
+    ComputedModelVersion    "1.154"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -216,9 +216,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 27 15:43:03 2018"
-  RTWModifiedTimeStamp	  465234179
-  ModelVersionFormat	  "1.%<AutoIncrement:152>"
+  LastModifiedDate	  "Tue Nov 27 16:13:42 2018"
+  RTWModifiedTimeStamp	  465236021
+  ModelVersionFormat	  "1.%<AutoIncrement:154>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -2504,7 +2504,7 @@ Model {
       SID		      "115"
       Position		      [130, -270, 160, -240]
       ZOrder		      34
-      Value		      "0"
+      Value		      "2"
     }
     Block {
       BlockType		      Reference
@@ -4036,6 +4036,9 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
+    visible		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    6
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -4063,8 +4066,8 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function [low,high] = fcn(state)\n\nperiod = 20e-3;\n\nstep = 30e-9;\n\nif state == 1\n    time_h"
-      "igh = 0.73e-3;\nelse\n    time_high = 0.9e-3;\nend\n\nlow = round((period-time_high)/step);\nhigh = round(time_h"
-      "igh/step);\n\n\nend"
+      "igh = 0.73e-3;\nelseif state == 2\n    time_high = 2e-3;\nelse\n    time_high = 0.9e-3;\nend\n\nlow = round((per"
+      "iod-time_high)/step);\nhigh = round(time_high/step);\n\n\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }

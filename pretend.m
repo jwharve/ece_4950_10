@@ -1,5 +1,4 @@
 cc;
-global numSquares
 global board
 global bot
 
@@ -7,25 +6,25 @@ bot.corner_loc = [0 0];
 bot.motor_loc = [0 0];
 
 
-numSquares = 8;
-numPieces = 6;
 
-board = struct('piece',nan(numSquares,numSquares),'angle',nan(numSquares,numSquares),'dist',nan(numSquares,numSquares),'possible',nan(numSquares,numSquares,numPieces*2));% us then them
+piece = struct('type',NaN,'team',NaN,'num',NaN,'angle',NaN,'dist',NaN,'possible',nan(numSquares,numSquares));
+
+board = repmat(piece,numSquares,numSquares);
 
 
 gui.encodedPieces = {
-'User bishop'       bishop(us)
-'Opponent bishop'   bishop(them)
-'User king'         king(us)
-'Opponent king'     king(them)
-'User knight'       knight(us)
-'Opponent knight'   knight(them)
-'User pawn'         pawn(us)
-'Opponent pawn'     pawn(them)
-'User queen'        queen(us)
-'Opponent queen'    queen(them)
-'User rook'         rook(us)
-'Opponent rook'     rook(them)
+'User bishop'       bishop
+'Opponent bishop'   bishop
+'User king'         king
+'Opponent king'     king
+'User knight'       knight
+'Opponent knight'   knight
+'User pawn'         pawn
+'Opponent pawn'     pawn
+'User queen'        queen
+'Opponent queen'    queen
+'User rook'         rook
+'Opponent rook'     rook
 };
 
 improc(gui);

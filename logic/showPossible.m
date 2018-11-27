@@ -1,5 +1,5 @@
-function [ret] = showPossible(board, i_x, i_y)
-global numSquares;
+function [ret] = showPossible(i_x, i_y)
+global board;
 
 thisPiece = board.piece(i_x,i_y);
 

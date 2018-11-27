@@ -73,7 +73,7 @@ elseif any(type == knight)
     end
 elseif any(type == pawn)
     % if it can move up
-    if i_y+1 <= numSquares && isnan(board(i_x,i_y+1).piece)
+    if i_y+1 <= numSquares && isnan(board(i_x,i_y+1).type)
         board(i_x,i_y).possible(i_x,i_y+1) = 1;
     end
     % check diagonals
@@ -83,9 +83,9 @@ elseif any(type == pawn)
             continue;
         end
         % if there's an opposing piece, it's valid
-        if ~isnan(board(i_x+ii,i_y+1).piece)
-            if team ~= 
-                board.possible(i_x+ii,i_y+1,type) = type;
+        if ~isnan(board(i_x+ii,i_y+1).type)
+            if team ~= board(i_x+ii,i_y+1).team
+                board(i_x,i_y).possible(i_x+ii,i_y+1) = 1;
             end
         end
     end
@@ -96,14 +96,14 @@ elseif any(type == queen)
         if (i_y-ii < 1)
             break;
         end
-        % if you run into an opposing piece
-        if ~isnan(board.piece(i_x-ii,i_y-ii))
-            if floor(type-1)/numPieces ~= floor((board.piece(i_x-ii,i_y-ii)-1)/numPieces)
-                board.possible(i_x-ii,i_y-ii,type) = type;
+        % if you run into a piece
+        if ~isnan(board(i_x-ii,i_y-ii).type)
+            if team ~= board(i_x-ii,i_y-ii).team % if opposing
+                board(i_x,i_y).possible(i_x-ii,i_y-ii) = 1;
             end
             break;
         end
-        board.possible(i_x-ii,i_y-ii,type) = type;
+        board(i_x,i_y).possible(i_x-ii,i_y-ii) = 1;
     end
     % to the right and up
     for ii = 1:numSquares-i_x
@@ -111,103 +111,103 @@ elseif any(type == queen)
         if (i_y+ii > numSquares)
             break;
         end
-        % if you run into an opposing piece
-        if ~isnan(board.piece(i_x+ii,i_y+ii))
-            if floor(type-1)/numPieces ~= floor((board.piece(i_x+ii,i_y+ii)-1)/numPieces)
-                board.possible(i_x+ii,i_y+ii,type) = type;
+        % if you run into a piece
+        if ~isnan(board(i_x+ii,i_y+ii).type)
+            if team ~= board(i_x+ii,i_y+ii).team % if opposing
+                board(i_x,i_y).possible(i_x+ii,i_y+ii) = 1;
             end
             break;
         end
-        board.possible(i_x+ii,i_y+ii,type) = type;
+        board(i_x,i_y).possible(i_x+ii,i_y+ii) = 1;
     end
     % vertical to bottom
     for ii = fliplr(1:i_y-1)
         % if you run into an opposing piece
-        if ~isnan(board.piece(i_x,ii))
-            if floor((type-1)/numPieces) ~= floor((board.piece(i_x,ii)-1)/numPieces)
-                board.possible(i_x,ii,type) = type;
+        if ~isnan(board(i_x,ii).type)
+            if team ~= board(i_x,ii).team
+                board(i_x,i_y).possible(i_x,ii) = 1;
             end
             break;
         end
-        board.possible(i_x,ii,type) = type;
+        board(i_x,i_y).possible(i_x,ii) = 1;
     end
     % vertical to top
     for ii = i_y+1:numSquares
         % if you run into an opposing piece
-        if ~isnan(board.piece(i_x,ii))
-            if floor((type-1)/numPieces) ~= floor((board.piece(i_x,ii)-1)/numPieces)
-                board.possible(i_x,ii,type) = type;
+        if ~isnan(board(i_x,ii).type)
+            if team ~= board(i_x,ii).team
+                board(i_x,i_y).possible(i_x,ii) = 1;
             end
             break;
         end
-        board.possible(i_x,ii,type) = type;
+        board(i_x,i_y).possible(i_x,ii) = 1;
     end
     % horizontal to left
     for ii = fliplr(1:i_x-1)
         % if you run into an opposing piece
-        if ~isnan(board.piece(ii,i_y))
-            if floor(type-1)/numPieces ~= floor(board.piece(ii,i_y)-1)/numPieces
-                board.possible(ii,i_y,type) = type;
+        if ~isnan(board(ii,i_y).type)
+            if team ~= board(ii,i_y).team
+                board(i_x,i_y).possible(ii,i_y) = 1;
             end
             break;
         end
-        board.possible(ii,i_y,type) = type;
+        board(i_x,i_y).possible(ii,i_y) = 1;
     end
     % horizontal to right
     for ii = i_x+1:numSquares
         % if you run into an opposing piece
-        if ~isnan(board.piece(ii,i_y))
-            if floor(type-1)/numPieces ~= floor(board.piece(ii,i_y)-1)/numPieces
-                board.possible(ii,i_y,type) = type;
+        if ~isnan(board(ii,i_y).type)
+            if team ~= board(ii,i_y).team
+                board(i_x,i_y).possible(ii,i_y) = 1;
             end
             break;
         end
-        board.possible(ii,i_y,type) = type;
+        board(i_x,i_y).possible(ii,i_y) = 1;
     end
 elseif any(type == rook)
     % vertical to bottom
     for ii = fliplr(1:i_y-1)
         % if you run into an opposing piece
-        if ~isnan(board.piece(i_x,ii))
-            if floor((type-1)/numPieces) ~= floor((board.piece(i_x,ii)-1)/numPieces)
-                board.possible(i_x,ii,type) = type;
+        if ~isnan(board(i_x,ii).type)
+            if team ~= board(i_x,ii).team
+                board(i_x,i_y).possible(i_x,ii) = 1;
             end
             break;
         end
-        board.possible(i_x,ii,type) = type;
+        board(i_x,i_y).possible(i_x,ii) = 1;
     end
     % vertical to top
     for ii = i_y+1:numSquares
         % if you run into an opposing piece
-        if ~isnan(board.piece(i_x,ii))
-            if floor((type-1)/numPieces) ~= floor((board.piece(i_x,ii)-1)/numPieces)
-                board.possible(i_x,ii,type) = type;
+        if ~isnan(board(i_x,ii).type)
+            if team ~= board(i_x,ii).team
+                board(i_x,i_y).possible(i_x,ii) = 1;
             end
             break;
         end
-        board.possible(i_x,ii,type) = type;
+        board(i_x,i_y).possible(i_x,ii) = 1;
     end
     % horizontal to left
     for ii = fliplr(1:i_x-1)
         % if you run into an opposing piece
-        if ~isnan(board.piece(ii,i_y))
-            if floor(type-1)/numPieces ~= floor(board.piece(ii,i_y)-1)/numPieces
-                board.possible(ii,i_y,type) = type;
+        if ~isnan(board(ii,i_y).type)
+            if team ~= board(ii,i_y).team
+                board(i_x,i_y).possible(ii,i_y) = 1;
             end
             break;
         end
-        board.possible(ii,i_y,type) = type;
+        board(i_x,i_y).possible(ii,i_y) = 1;
     end
     % horizontal to right
     for ii = i_x+1:numSquares
         % if you run into an opposing piece
-        if ~isnan(board.piece(ii,i_y))
-            if floor(type-1)/numPieces ~= floor(board.piece(ii,i_y)-1)/numPieces
-                board.possible(ii,i_y,type) = type;
+        if ~isnan(board(ii,i_y).type)
+            if team ~= board(ii,i_y).team
+                board(i_x,i_y).possible(ii,i_y) = 1;
             end
             break;
         end
-        board.possible(ii,i_y,type) = type;
+        board(i_x,i_y).possible(ii,i_y) = 1;
     end
 end
 end

@@ -7,7 +7,6 @@ global bot;
 connected = 1; % set to 0 if not connected to Q4 board
 
 boardWidth = 50;
-global numSquares; 
 squareWidth = boardWidth/numSquares;
 
 new = 1; % 1 means new picture
@@ -170,54 +169,55 @@ for ii = 1:size(props,1)
         
         if color == 'r' && marker == '^'
             ind = strcmpi(gui.encodedPieces(:,1),'Red Triangle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'r' && marker == 's'
             ind = strcmpi(gui.encodedPieces(:,1),'Red Square');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'r' && marker == 'o'
             ind = strcmpi(gui.encodedPieces(:,1),'Red Circle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == '^'
             ind = strcmpi(gui.encodedPieces(:,1),'Green Triangle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == 's'
             ind = strcmpi(gui.encodedPieces(:,1),'Green Square');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == 'o'
             ind = strcmpi(gui.encodedPieces(:,1),'Green Circle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == '^'
             ind = strcmpi(gui.encodedPieces(:,1),'Blue Triangle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == 's'
             ind = strcmpi(gui.encodedPieces(:,1),'Blue Square');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == 'o'
             ind = strcmpi(gui.encodedPieces(:,1),'Blue Circle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == '^'
             ind = strcmpi(gui.encodedPieces(:,1),'Yellow Triangle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == 's'
             ind = strcmpi(gui.encodedPieces(:,1),'Yellow Square');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == 'o'
             ind = strcmpi(gui.encodedPieces(:,1),'Yellow Circle');
-            piece = retnum(gui.encodedPieces(ind,2));
+            [type, team] = retnum(gui.encodedPieces(ind,2));
         end
         
-        board.piece(xInd,yInd) = piece;
+        board(xInd,yInd).type = type;
+        board(xInd,yInd).type = team;
         
         xa = bot.motor_loc(1)-pieces(sel).centroid(1);
         ya = pieces(sel).centroid(2)-bot.motor_loc(2);
         
         % calculate angle
         angle = atand(xa/ya);
-        board.angle(xInd,yInd) = angle;
+        board(xInd,yInd).angle = angle;
         
         % calculate distance
         dist = sqrt(xa^2+ya^2);
-        board.dist(xInd,yInd) = dist;
+        board(xInd,yInd).dist = dist;
     end
 end
 

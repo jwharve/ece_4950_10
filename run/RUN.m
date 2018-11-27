@@ -10,7 +10,7 @@ improc_done = 0;
 
 connected = 0;
 
-piece = struct('type',NaN,'team',NaN,'num',NaN,'angle',NaN,'dist',NaN,'possible',nan(numPieces,numPieces));
+piece = struct('type',NaN,'team',NaN,'num',NaN,'angle',NaN,'dist',NaN,'possible',nan(numSquares,numSquares));
 
 board = repmat(piece,numSquares,numSquares);
 
@@ -33,14 +33,16 @@ end
 % % random testing
 % [x, y] = ind2sub([numSquares numSquares],randperm(numSquares^2));
 % for ii = 1:randi(numSquares^2)
-%     board.piece(x(ii),y(ii)) = randi(2*numPieces+1);
+%     board(x(ii),y(ii)).type = randi(numPieces+1);
+%     board(x(ii),y(ii)).team = randi(2);
 % end
 
 board(3,3).type = king;
 board(3,3).team = us;
 board(3,3).num = 1;
 
-[locX, locY] = find(~isnan(board.piece));
+search = reshape([board.type],numSquares,numSquares);
+[locX, locY] = find(~isnan(search));
 
 for ii = 1:size(locX,1)
     genPossible(locX(ii),locY(ii));
@@ -52,8 +54,6 @@ improc_done = 1;
 while improc_done == 0
      
 end
-
-dispPossible;
 
 %% Cleanup
 

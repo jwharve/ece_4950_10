@@ -1,31 +1,43 @@
-function [num] = retnum(in)
+function [type, team] = retnum(in)
 
 if strcmpi(in,'User bishop')
-    num = bishop(us);
+    type = bishop;
+    team = us;
 elseif strcmpi(in,'Opponent bishop')
-    num = bishop(them);
+    type = bishop;
+    team = them;
 elseif strcmpi(in,'User king')
-    num = king(us);
+    type = king;
+    team = us;
 elseif strcmpi(in,'Opponent king')
-    num = king(them);
+    type = king;
+    team = them;
 elseif strcmpi(in,'User knight')
-    num = knight(us);
+    type = knight;
+    team = us;
 elseif strcmpi(in,'Opponent knight')
-    num = knight(them);
+    type = knight;
+    team = them;
 elseif strcmpi(in,'User pawn')
-    num = pawn(us);
+    type = pawn;
+    team = us;
 elseif strcmpi(in,'Opponent pawn')
-    num = pawn(them);
+    type = pawn;
+    team = them;
 elseif strcmpi(in,'User queen')
-    num = queen(us);
+    type = queen;
+    team = us;
 elseif strcmpi(in,'Opponent queen')
-    num = queen(them);
+    type = queen;
+    team = them;
 elseif strcmpi(in,'User rook')
-    num = rook(us);
+    type = rook;
+    team = us;
 elseif strcmpi(in,'Opponent rook')
-    num = rook(them);
+    type = rook;
+    team = them;
 else
-    num = 1;
+    type = 1;
 end
 
 end
