@@ -11,7 +11,7 @@ end
 remChecks;
 
 
-ki = find([board.type] == king && [board.team] == team);
+ki = find([board.type] == king & [board.team] == team);
 
 ret = 0;
 

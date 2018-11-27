@@ -41,6 +41,11 @@ board(3,3).type = king;
 board(3,3).team = us;
 board(3,3).num = 1;
 
+board(2,2).type = pawn;
+board(2,2).team = them;
+board(2,2).num = 1;
+
+
 search = reshape([board.type],numSquares,numSquares);
 [locX, locY] = find(~isnan(search));
 clearPossible;

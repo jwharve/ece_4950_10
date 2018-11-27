@@ -73,19 +73,38 @@ elseif any(type == knight)
     end
 elseif any(type == pawn)
     % if it can move up
-    if i_y+1 <= numSquares && isnan(board(i_x,i_y+1).type)
-        board(i_x,i_y).possible(i_x,i_y+1) = 1;
-    end
-    % check diagonals
-    for ii = [-1 1]
-        % if it's off the board
-        if i_x+ii < 1 || i_x+ii > numSquares || i_y+1 > numSquares
-            continue;
+    if team == us
+        if i_y+1 <= numSquares && isnan(board(i_x,i_y+1).type)
+            board(i_x,i_y).possible(i_x,i_y+1) = 1;
         end
-        % if there's an opposing piece, it's valid
-        if ~isnan(board(i_x+ii,i_y+1).type)
-            if team ~= board(i_x+ii,i_y+1).team
-                board(i_x,i_y).possible(i_x+ii,i_y+1) = 1;
+        % check diagonals
+        for ii = [-1 1]
+            % if it's off the board
+            if i_x+ii < 1 || i_x+ii > numSquares || i_y+1 > numSquares
+                continue;
+            end
+            % if there's an opposing piece, it's valid
+            if ~isnan(board(i_x+ii,i_y+1).type)
+                if team ~= board(i_x+ii,i_y+1).team
+                    board(i_x,i_y).possible(i_x+ii,i_y+1) = 1;
+                end
+            end
+        end
+    else
+        if i_y+1 <= numSquares && isnan(board(i_x,i_y-1).type)
+            board(i_x,i_y).possible(i_x,i_y-1) = 1;
+        end
+        % check diagonals
+        for ii = [-1 1]
+            % if it's off the board
+            if i_x+ii < 1 || i_x+ii > numSquares || i_y-1 > numSquares
+                continue;
+            end
+            % if there's an opposing piece, it's valid
+            if ~isnan(board(i_x+ii,i_y-1).type)
+                if team ~= board(i_x+ii,i_y-1).team
+                    board(i_x,i_y).possible(i_x+ii,i_y-1) = 1;
+                end
             end
         end
     end
