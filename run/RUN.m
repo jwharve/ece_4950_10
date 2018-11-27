@@ -2,19 +2,17 @@
 % 8 squares
 clearvars; close all; clc;
 
-global numPieces;
-global numSquares;
 global board;
 global improc_done;
 global bot;
 
 improc_done = 0;
-numPieces = 6;
-numSquares = 8;
 
 connected = 0;
 
-board = struct('piece',nan(numSquares,numSquares),'angle',nan(numSquares,numSquares),'dist',nan(numSquares,numSquares),'possible',nan(numSquares,numSquares,numPieces*2));% us then them
+piece = struct('type',NaN,'team',NaN,'num',NaN,'angle',NaN,'dist',NaN,'possible',nan(numPieces,numPieces));
+
+board = repmat(piece,numSquares,numSquares);
 
 gui = GUI;
 
@@ -38,7 +36,9 @@ end
 %     board.piece(x(ii),y(ii)) = randi(2*numPieces+1);
 % end
 
-board.piece(3,3) = king(us);
+board(3,3).type = king;
+board(3,3).team = us;
+board(3,3).num = 1;
 
 [locX, locY] = find(~isnan(board.piece));
 

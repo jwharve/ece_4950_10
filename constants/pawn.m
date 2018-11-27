@@ -1,15 +1,3 @@
 function ret = pawn(varargin)
-us = 4;
-them = 10;
-
-if nargin ~= 1
-    ret = [us; them];
-else
-    if varargin{1} == 1
-        ret = us;
-    else
-        ret = them;
-    end
-end
-
+ret = 4;
 end

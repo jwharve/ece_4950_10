@@ -1,15 +1,3 @@
 function ret = bishop(varargin)
-us = 1;
-them = 7;
-
-if nargin ~= 1
-    ret = [us; them];
-else
-    if varargin{1} == 1
-        ret = us;
-    else
-        ret = them;
-    end
-end
-
+ret = 1;
 end
