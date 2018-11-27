@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.144"
+    ComputedModelVersion    "1.147"
     NumModelReferences	    0
     NumTestPointedSignals   1
     TestPointedSignal {
@@ -120,7 +120,7 @@ Model {
     ExternalFileReference {
       Reference		      "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
       Path		      "model/stepper_down/Detect Rise Positive"
-      SID		      "211"
+      SID		      "228"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -189,7 +189,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
 	ZoomFactor		[1.25]
-	Offset			[-192.91051795678914, -476.27962718834306]
+	Offset			[-102.839551330094, -528.29360969324046]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -223,9 +223,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Nov 25 17:48:51 2018"
-  RTWModifiedTimeStamp	  465068785
-  ModelVersionFormat	  "1.%<AutoIncrement:144>"
+  LastModifiedDate	  "Tue Nov 27 10:08:53 2018"
+  RTWModifiedTimeStamp	  465167219
+  ModelVersionFormat	  "1.%<AutoIncrement:147>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1399,7 +1399,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "224"
+    SIDHighWatermark	    "238"
     Block {
       BlockType		      Reference
       Name		      "Data Display"
@@ -2621,16 +2621,16 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "stepper_down"
-      SID		      "209"
+      SID		      "226"
       Ports		      [0, 2]
-      Position		      [590, -207, 660, -138]
-      ZOrder		      44
+      Position		      [585, -207, 655, -138]
+      ZOrder		      47
       BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
       RequestExecContextInheritance off
       Variant		      off
       System {
 	Name			"stepper_down"
-	Location		[953, 0, 1927, 1047]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -2647,17 +2647,17 @@ Model {
 	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
-	  SID			  "210"
-	  Position		  [520, -40, 550, -10]
+	  SID			  "227"
+	  Position		  [545, -10, 575, 20]
 	  ZOrder		  16
 	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Detect Rise\nPositive"
-	  SID			  "211"
+	  SID			  "228"
 	  Ports			  [1, 1]
-	  Position		  [265, 150, 325, 200]
+	  Position		  [290, 120, 350, 170]
 	  ZOrder		  9
 	  LibraryVersion	  "1.401"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
@@ -2672,9 +2672,9 @@ Model {
 	Block {
 	  BlockType		  Product
 	  Name			  "Product"
-	  SID			  "212"
+	  SID			  "229"
 	  Ports			  [2, 1]
-	  Position		  [445, 235, 475, 270]
+	  Position		  [470, 205, 500, 240]
 	  ZOrder		  50
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2686,9 +2686,9 @@ Model {
 	Block {
 	  BlockType		  Product
 	  Name			  "Product1"
-	  SID			  "213"
+	  SID			  "230"
 	  Ports			  [2, 1]
-	  Position		  [520, 137, 550, 173]
+	  Position		  [545, 107, 575, 143]
 	  ZOrder		  53
 	  InputSameDT		  off
 	  OutDataTypeStr	  "uint32"
@@ -2698,9 +2698,9 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
-	  SID			  "214"
+	  SID			  "231"
 	  Ports			  [2, 1]
-	  Position		  [400, 167, 430, 198]
+	  Position		  [425, 137, 455, 168]
 	  ZOrder		  44
 	  InputSameDT		  off
 	  OutDataTypeStr	  "uint32"
@@ -2708,8 +2708,8 @@ Model {
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay"
-	  SID			  "215"
-	  Position		  [380, 238, 420, 272]
+	  SID			  "232"
+	  Position		  [405, 208, 445, 242]
 	  ZOrder		  52
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2719,35 +2719,33 @@ Model {
 	Block {
 	  BlockType		  Constant
 	  Name			  "enable"
-	  SID			  "216"
-	  Position		  [450, 300, 480, 330]
+	  SID			  "233"
+	  Position		  [475, 270, 505, 300]
 	  ZOrder		  51
-	  Value			  "0"
 	  OutDataTypeStr	  "uint32"
-	  LockScale		  on
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "my_dir"
-	  SID			  "217"
-	  Position		  [655, -120, 685, -90]
+	  SID			  "234"
+	  Position		  [645, -115, 675, -85]
 	  ZOrder		  13
 	}
 	Block {
 	  BlockType		  DiscretePulseGenerator
 	  Name			  "step_pulse"
-	  SID			  "218"
+	  SID			  "235"
 	  Ports			  [0, 1]
-	  Position		  [445, 129, 475, 161]
+	  Position		  [470, 99, 500, 131]
 	  ZOrder		  10
 	  PulseType		  "Time based"
-	  Period		  "0.005"
+	  Period		  "0.01"
 	  PulseWidth		  "50"
 	}
 	Block {
 	  BlockType		  Switch
 	  Name			  "switch"
-	  SID			  "219"
+	  SID			  "236"
 	  Position		  [635, 35, 685, 75]
 	  ZOrder		  3
 	  InputSameDT		  off
@@ -2756,15 +2754,15 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "dir"
-	  SID			  "221"
-	  Position		  [860, -112, 890, -98]
+	  SID			  "237"
+	  Position		  [860, -107, 890, -93]
 	  ZOrder		  4
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "step"
-	  SID			  "220"
+	  SID			  "238"
 	  Position		  [860, 48, 890, 62]
 	  ZOrder		  -13
 	  Port			  "2"
@@ -2795,18 +2793,18 @@ Model {
 	  ZOrder		  4
 	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  Points		  [54, 0; 0, 25]
+	  Points		  [54, 0; 0, 29]
 	  Branch {
 	    ZOrder		    5
-	    Points		    [0, 35]
-	    DstBlock		    "Product"
-	    DstPort		    1
+	    Points		    [76, 0; 0, -129]
+	    DstBlock		    "switch"
+	    DstPort		    2
 	  }
 	  Branch {
 	    ZOrder		    6
-	    Points		    [104, 0; 0, -155]
-	    DstBlock		    "switch"
-	    DstPort		    2
+	    Points		    [0, 31]
+	    DstBlock		    "Product"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -2858,18 +2856,18 @@ Model {
 	  }
 	}
 	Line {
-	  ZOrder		  17
+	  ZOrder		  15
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
-	  Points		  [38, 0; 0, 65]
+	  Points		  [26, 0; 0, 35]
 	  DstBlock		  "switch"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  18
+	  ZOrder		  16
 	  SrcBlock		  "Product1"
 	  SrcPort		  1
-	  Points		  [17, 0; 0, -85]
+	  Points		  [25, 0; 0, -55]
 	  DstBlock		  "switch"
 	  DstPort		  3
 	}
@@ -2887,7 +2885,7 @@ Model {
       Variant		      off
       System {
 	Name			"stepper_out"
-	Location		[953, 0, 1927, 1047]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -3845,18 +3843,18 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      147
+      ZOrder		      149
       SrcBlock		      "stepper_down"
       SrcPort		      1
-      Points		      [83, 0; 0, -15]
+      Points		      [88, 0; 0, -15]
       DstBlock		      "Q4 DO "
       DstPort		      4
     }
     Line {
-      ZOrder		      148
+      ZOrder		      150
       SrcBlock		      "stepper_down"
       SrcPort		      2
-      Points		      [39, 0; 0, -65]
+      Points		      [44, 0; 0, -65]
       DstBlock		      "Q4 DO "
       DstPort		      3
     }
@@ -3872,7 +3870,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      145
+      ZOrder		      155
       FontSize		      12
     }
     Annotation {
@@ -3887,7 +3885,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      146
+      ZOrder		      156
       FontSize		      12
     }
     Annotation {
@@ -3901,7 +3899,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      147
+      ZOrder		      157
       FontSize		      12
     }
     Annotation {
@@ -3915,7 +3913,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      148
+      ZOrder		      158
       FontSize		      12
     }
     Annotation {
@@ -3930,7 +3928,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      149
+      ZOrder		      159
       FontSize		      12
     }
     Annotation {
@@ -4072,6 +4070,9 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
+    visible		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    6
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

@@ -5,7 +5,10 @@ clearvars; close all; clc;
 global numPieces;
 global numSquares;
 global board;
+global improc_done;
+global bot;
 
+improc_done = 0;
 numPieces = 6;
 numSquares = 8;
 
@@ -44,6 +47,11 @@ for ii = 1:size(locX,1)
 end
 remChecks;
 
+improc_done = 1;
+
+while improc_done == 0
+     
+end
 
 dispPossible;
 

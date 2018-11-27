@@ -1,14 +1,10 @@
 function improc(gui)
 global board;
-
+global bot;
 
 %% setup
 
 connected = 1; % set to 0 if not connected to Q4 board
-
-motorLoc = [291 -30]; % position of the motor in "pixels"
-
-cornerLoc = [0 0]; % position of the corner in "pixels"
 
 boardWidth = 50;
 global numSquares; 
@@ -162,8 +158,8 @@ for ii = 1:size(props,1)
         pieces(numPieces).name = {[colorName ' ' type]};
         pieces(numPieces).centroid = round(props(ii).Centroid);
         
-        x = pieces(numPieces).centroid(1) - cornerLoc(1);
-        y = pieces(numPieces).centroid(2) - cornerLoc(2);
+        x = pieces(numPieces).centroid(1) - bot.corner_loc(1);
+        y = pieces(numPieces).centroid(2) - bot.corner_loc(2);
         xInd = floor(x/squareWidth) + 1;
         yInd = floor(y/squareWidth) + 1;
         
@@ -212,8 +208,8 @@ for ii = 1:size(props,1)
         
         board.piece(xInd,yInd) = piece;
         
-        xa = motorLoc(1)-pieces(sel).centroid(1);
-        ya = pieces(sel).centroid(2)-motorLoc(2);
+        xa = bot.motor_loc(1)-pieces(sel).centroid(1);
+        ya = pieces(sel).centroid(2)-bot.motor_loc(2);
         
         % calculate angle
         angle = atand(xa/ya);

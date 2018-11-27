@@ -8,6 +8,8 @@ classdef Control < handle
         % constants
         pickup_steps
         dist2steps
+        motor_loc
+        corner_loc
     end
     methods
         function obj = Control()
@@ -22,9 +24,10 @@ classdef Control < handle
             obj.out_steps = 0;
             obj.down_state = up;
             % constants
-            obj.pickup_steps = 600;
+            obj.pickup_steps = 1100;
             obj.dist2steps = 1;
-            
+            obj.motor_loc = [0 0];
+            obj.corner_loc = [0 0];
         end
         
         function arm_done(obj)

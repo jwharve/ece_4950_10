@@ -1,4 +1,5 @@
-function [] = move_piece(bot,ang1,dist1,ang2,dist2)
+function [] = move_piece(ang1,dist1,ang2,dist2)
+global bot;
 
 % move arm in
 bot.step_out(0);
