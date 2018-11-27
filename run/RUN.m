@@ -43,7 +43,7 @@ board(3,3).num = 1;
 
 search = reshape([board.type],numSquares,numSquares);
 [locX, locY] = find(~isnan(search));
-
+clearPossible;
 for ii = 1:size(locX,1)
     genPossible(locX(ii),locY(ii));
 end

@@ -1,15 +1,10 @@
 function [ret] = showPossible(i_x, i_y)
 global board;
 
-thisPiece = board.piece(i_x,i_y);
+thisPiece = board(i_x,i_y).possible;
 
-ind = find(~isnan(board.possible(:,:,thisPiece)));
+thisPiece(isnan(thisPiece)) = 0;
 
-ret = nan(numSquares,numSquares);
-
-for ii = 1:size(ind,1)
-    ret(ind(ii)) = 1;
-end
-
+ret = thisPiece;
 end
 
