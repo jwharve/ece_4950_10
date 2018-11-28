@@ -25,9 +25,6 @@ while gui.ready == 0
     drawnow
 end
 
-while (obj.read_load < 0.9)
-    
-end
 
 %% Identify Pieces
 if connected
@@ -61,9 +58,6 @@ remChecks;
 
 improc_done = 1;
 
-while improc_done == 0
-     
-end
 
 %% Cleanup
 

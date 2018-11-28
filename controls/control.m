@@ -130,6 +130,8 @@ classdef Control < handle
         
         function hit_load(obj)
             obj.arm_pos(10);
+            obj.step_out(120);
+            obj.stepper_done;
             obj.claw(5);
             obj.arm_done;
             obj.arm_pos(-3);

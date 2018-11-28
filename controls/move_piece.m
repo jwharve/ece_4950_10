@@ -1,7 +1,7 @@
 function [] = move_piece(ang1,dist1,ang2,dist2)
 global bot;
 
-movein = 1;
+movein = 0;
 
 % move arm in
 if movein
