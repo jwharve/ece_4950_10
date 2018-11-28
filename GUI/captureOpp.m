@@ -31,7 +31,7 @@ else
         dist(k) = sqrt((origin(k,1)-desired(k,1))^2 + (origin(k,2)-desired(k,2))^2);
     end
     min_indx = find(disk == min(dist));
-    ret = desired(min_indx,:);
+    ret = [origin(min_indx,:) , desired(min_indx,:)];
 end
 
 

@@ -36,7 +36,7 @@ if any(type == bishop)
         board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
     end
     % to the left and up
-    for ii = 1:numSquares
+    for ii = 1:i_x-1
         % if you run off the top
         if (i_y+ii > numSquares)
             break;
@@ -170,7 +170,7 @@ elseif any(type == queen)
         board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
     end
     % to the left and up
-    for ii = 1:i_x - 1
+    for ii = 1:i_x-1
         % if you run off the top
         if (i_y+ii > numSquares)
             break;

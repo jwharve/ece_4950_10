@@ -4,10 +4,14 @@ function ret = possibleCoord(GB)
 k=1;
 for i=1:8
     for j=1:8
-        if ~isnan(GB(i,j))  
+        if ~isnan(GB(i,j)) 
             ret(k,1)= i;
             ret(k,2)= j;
             k=k+1;
         end
     end
+end
+if k==1
+    ret=NaN;
+end
 end

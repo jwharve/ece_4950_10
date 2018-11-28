@@ -1,26 +1,26 @@
-function ret = IDpiece(str)
-if str == "User King"
-    ret = king(us);
-elseif str == "User Queen"
-    ret = queen(us);
-elseif str == "User Bishop"
-    ret = bishop(us);
-elseif str == "User Knight"
-    ret = knight(us);
-elseif str == "User Rook"
-    ret = rook(us);
-elseif str == "User Pawn"
-    ret = pawn(us);
-elseif str == "Opponent King"
-    ret = king(them);
-elseif str == "Opponent Queen"
-    ret = queen(them);
-elseif str == "Opponent Bishop"
-    ret = bishop(them);
-elseif str == "Opponent Knight"
-    ret = knight(them);
-elseif str == "Opponent Rook"
-    ret = rook(them);
-elseif str == "Opponent Pawn"
-    ret = pawn(them);
+function ret = IDpiece(id)
+if id == king(us)
+    ret = "User King";
+elseif id == queen(us)
+    ret = "User Queen";
+elseif id == bishop(us)
+    ret = "User Bishop";
+elseif id == knight(us)
+    ret ="User Bishop";
+elseif id == rook(us)
+    ret = "User Rook";
+elseif id ==  pawn(us)
+    ret = "User Pawn";
+elseif id ==  king(them)
+    ret = "Opponent King";
+elseif id == queen(them)
+    ret = "Opponent Queen";
+elseif id == bishop(them)
+    ret = "Opponent Bishop";
+elseif id ==  knight(them)
+    "Opponent Knight";
+elseif id == rook(them)
+    ret = "Opponent Rook";
+elseif id == pawn(them)
+    ret = "Opponent Pawn";
 end    
