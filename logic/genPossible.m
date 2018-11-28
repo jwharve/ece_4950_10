@@ -20,6 +20,36 @@ if any(type == bishop)
         end
         board(i_x,i_y).possible(i_x-ii,i_y-ii) = 1;
     end
+    % to the right and down
+    for ii = 1:numSquares - i_x
+        % if you run off the bottom
+        if (i_y-ii < 1)
+            break;
+        end
+        % if you run into a piece
+        if ~isnan(board(i_x+ii,i_y-ii).type)
+            if team ~= board(i_x+ii,i_y-ii).team % if opposing
+                board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
+            end
+            break;
+        end
+        board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
+    end
+    % to the left and up
+    for ii = 1:numSquares
+        % if you run off the top
+        if (i_y+ii > numSquares)
+            break;
+        end
+        % if you run into a piece
+        if ~isnan(board(i_x-ii,i_y+ii).type)
+            if team ~= board(i_x-ii,i_y+ii).team % if opposing
+                board(i_x,i_y).possible(i_x-ii,i_y+ii) = 1;
+            end
+            break;
+        end
+        board(i_x,i_y).possible(i_x-ii,i_y+ii) = 1;
+    end
     % to the right and up
     for ii = 1:numSquares-i_x
         % if you run off the top
@@ -123,6 +153,36 @@ elseif any(type == queen)
             break;
         end
         board(i_x,i_y).possible(i_x-ii,i_y-ii) = 1;
+    end
+    % to the right and down
+    for ii = 1:numSquares - i_x
+        % if you run off the bottom
+        if (i_y-ii < 1)
+            break;
+        end
+        % if you run into a piece
+        if ~isnan(board(i_x+ii,i_y-ii).type)
+            if team ~= board(i_x+ii,i_y-ii).team % if opposing
+                board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
+            end
+            break;
+        end
+        board(i_x,i_y).possible(i_x+ii,i_y-ii) = 1;
+    end
+    % to the left and up
+    for ii = 1:i_x - 1
+        % if you run off the top
+        if (i_y+ii > numSquares)
+            break;
+        end
+        % if you run into a piece
+        if ~isnan(board(i_x-ii,i_y+ii).type)
+            if team ~= board(i_x-ii,i_y+ii).team % if opposing
+                board(i_x,i_y).possible(i_x-ii,i_y+ii) = 1;
+            end
+            break;
+        end
+        board(i_x,i_y).possible(i_x-ii,i_y+ii) = 1;
     end
     % to the right and up
     for ii = 1:numSquares-i_x

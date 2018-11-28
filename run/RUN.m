@@ -1,6 +1,6 @@
 %% Setup
 % 8 squares
-clearvars; close all; clc;
+clearvars; close all; clc; clear all;
 
 global board;
 global improc_done;
@@ -20,9 +20,10 @@ if connected
     bot = Control;
 end
 
-while gui.ready == 0
-    drawnow
-end
+
+% while gui.ready == 0
+%     drawnow
+% end
 
 %% Identify Pieces
 if connected
@@ -41,9 +42,9 @@ board(3,3).type = king;
 board(3,3).team = us;
 board(3,3).num = 1;
 
-board(2,2).type = pawn;
-board(2,2).team = them;
-board(2,2).num = 1;
+board(5,4).type = queen;
+board(5,4).team = them;
+board(5,4).num = 1;
 
 
 search = reshape([board.type],numSquares,numSquares);
