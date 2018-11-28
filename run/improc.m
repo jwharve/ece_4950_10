@@ -1,6 +1,20 @@
 function improc(gui)
 global board;
 global bot;
+gui.encodedPieces = {
+'Green Circle'      'User bishop'
+'Red Circle'        'Opponent bishop'
+'Yellow Circle'     'User king'
+'Blue Circle'       'Opponent king'
+'Green Square'      'User knight'
+'Red Square'        'Opponent knight'
+'Yellow Square'     'User pawn'
+'Blue Square'       'Opponent pawn'
+'Green Triangle'    'User queen'
+'Red Triangle'      'Opponent queen'
+'Yellow Triangle'   'User rook'
+'Blue Triangle'     'Opponent rook'
+};
 
 % set up disks for improc
 se1 = strel('disk',1);
@@ -19,10 +33,9 @@ di4 = strel('diamond',4);
 
 connected = 0; % set to 0 if not connected to Q4 board
 
-boardWidth = 365;
-squareWidth = boardWidth/numSquares;
+squareWidth = bot.boardWidth/numSquares;
 
-new = 0; % 1 means new picture
+new = 1; % 1 means new picture
 
 if new == 1 % if you want to take a new picture
     % check to make sure that the webcam is plugged in
@@ -37,23 +50,24 @@ if new == 1 % if you want to take a new picture
     end
 
     % open preview
-    preview(cam);
+%     preview(cam);
     
     % capture image without pieces
-    menu('Image without pieces','capture');
-    without = snapshot(cam);
+%     menu('Image without pieces','capture');
+%     without = snapshot(cam);
     
     % capture image with pieces
-    menu('Image with pieces','capture');
+%     menu('Image with pieces','capture');
     with = snapshot(cam);
     
     % close preview
-    closePreview(cam);
+%     closePreview(cam);
     
     % save the pictures
     t = clock;
     name = sprintf('pics_%02.0f_%02.0f_%02.0f_%02.0f',t(2:5));
-    save(['saved_pics/' name],'with','without');
+%     save(['saved_pics/' name],'with','without');
+    save(['saved_pics/' name],'with');
 else % if you want to use previous pictures
     % load the last picture by timestamp
     pics = ls('saved_pics/pics_*.mat');
@@ -63,7 +77,7 @@ end
 %% subtraction
 x = bot.corner_loc(2);
 y = bot.corner_loc(1);
-withc = with(x:x+boardWidth,y:y+boardWidth,:);
+withc = with(x:x+bot.boardWidth,y:y+bot.boardWidth,:);
 
 withsv = rgb2hsv(withc);
 
@@ -86,33 +100,23 @@ orig = pic;
 img = pic;
 imshow(pic)
 pause(2);
-img = imdilate(img,di3);
-img = imerode(img,di3);
-img = imdilate(img,di2);
-imshow(img);
-keyboard
+
 %% erode/dilate
-
-
-% erode and dilate
-img = pic;
-imshow(img);
-pause(0.5);
-
-img = imerode(img, di2);
+img = imdilate(img,se1);
 imshow(img)
-pause(0.5);
-
-img = imerode(img, di2);
-img = imdilate(img, di3);
+pause(1);
+img = imdilate(img,se2);
 imshow(img)
-pause(0.5);
-
+pause(1);
+img = imerode(img,di3);
 imshow(img)
-pause(0.5);
+pause(1);
+img = imdilate(img,se2);
+imshow(img)
+pause(1);
 
 % display the original and processed
-imshowpair(with,img,'montage');
+imshowpair(withc,img,'montage');
 
 %% recognize
 bwconn = bwconncomp(img);
@@ -121,19 +125,19 @@ props = regionprops(bwconn);
 hold on;
 numPieces = 0;
 for ii = 1:size(props,1)        
-    if props(ii).Area > 30
+    if props(ii).Area > 200
         numPieces = numPieces + 1;
         center = props(ii).Centroid;
 
         %get shape
-        if props(ii).Area < 210
-            type = 'Triangle';
+        if props(ii).Area < 500
+            stype = 'Triangle';
             marker = '^';
-        elseif props(ii).Area < 530
-            type = 'Square';
+        elseif props(ii).Area < 700
+            stype = 'Square';
             marker = 's';
         else
-            type = 'Circle';
+            stype = 'Circle';
             marker = 'o';
         end
         
@@ -162,14 +166,14 @@ for ii = 1:size(props,1)
         
         % plot and print
         plot(center(1),center(2),'marker',marker,'MarkerFaceColor',color,'MarkerEdgeColor',color)
-        fprintf('%s detected at pixel %0.0f, %0.0f\n',type,center(1),center(2));
+        
         
         % update pieces
-        pieces(numPieces).name = {[colorName ' ' type]};
+        pieces(numPieces).name = {[colorName ' ' stype]};
         pieces(numPieces).centroid = round(props(ii).Centroid);
         
-        x = pieces(numPieces).centroid(1) - bot.corner_loc(1);
-        y = pieces(numPieces).centroid(2) - bot.corner_loc(2);
+        x = pieces(numPieces).centroid(1);
+        y = pieces(numPieces).centroid(2);
         xInd = floor(x/squareWidth) + 1;
         yInd = floor(y/squareWidth) + 1;
         
@@ -216,18 +220,20 @@ for ii = 1:size(props,1)
             [type, team] = retnum(gui.encodedPieces(ind,2));
         end
         
+        fprintf('%s detected at square %0.0f, %0.0f...size %0.0f\n',stype,xInd,yInd,props(ii).Area);
+        
         board(xInd,yInd).type = type;
         board(xInd,yInd).type = team;
         
-        xa = bot.motor_loc(1)-pieces(sel).centroid(1);
-        ya = pieces(sel).centroid(2)-bot.motor_loc(2);
+        xa = x-bot.motor_loc(1);
+        ya = y-bot.motor_loc(2);
         
         % calculate angle
-        angle = atand(xa/ya);
+        angle = atand(xa/ya)
         board(xInd,yInd).angle = angle;
         
         % calculate distance
-        dist = sqrt(xa^2+ya^2);
+        dist = sqrt(xa^2+ya^2)
         board(xInd,yInd).dist = dist;
     end
 end

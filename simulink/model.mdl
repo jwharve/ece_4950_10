@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.154"
+    ComputedModelVersion    "1.161"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -181,8 +181,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
-	ZoomFactor		[1.0]
-	Offset			[-95.715175345909032, -472.65604362943606]
+	ZoomFactor		[1.75]
+	Offset			[-99.331286498954768, -418.420425220531]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -216,9 +216,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 27 16:13:42 2018"
-  RTWModifiedTimeStamp	  465236021
-  ModelVersionFormat	  "1.%<AutoIncrement:154>"
+  LastModifiedDate	  "Wed Nov 28 12:47:26 2018"
+  RTWModifiedTimeStamp	  465310044
+  ModelVersionFormat	  "1.%<AutoIncrement:161>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1234,6 +1234,14 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      RateLimiter
+      RisingSlewLimit	      "1"
+      FallingSlewLimit	      "-1"
+      SampleTimeMode	      "continuous"
+      InitialCondition	      "0"
+      LinearizeAsGain	      on
+    }
+    Block {
       BlockType		      RelationalOperator
       Operator		      ">="
       InputSameDT	      on
@@ -1359,9 +1367,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "175"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "239"
+    SIDHighWatermark	    "240"
     Block {
       BlockType		      Reference
       Name		      "Data Display"
@@ -1431,7 +1439,7 @@ Model {
       Position		      [480, 310, 535, 360]
       ZOrder		      -7
       BackgroundColor	      "yellow"
-      Gain		      "5"
+      Gain		      "0.0005"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1443,7 +1451,7 @@ Model {
       Position		      [495, 390, 555, 430]
       ZOrder		      -8
       BackgroundColor	      "yellow"
-      Gain		      "0.003"
+      Gain		      "0"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1455,7 +1463,7 @@ Model {
       Position		      [465, 236, 520, 274]
       ZOrder		      -9
       BackgroundColor	      "yellow"
-      Gain		      "0.1"
+      Gain		      "2"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1671,6 +1679,16 @@ Model {
       slot		      "-1"
     }
     Block {
+      BlockType		      RateLimiter
+      Name		      "Rate Limiter"
+      SID		      "240"
+      Position		      [205, 295, 235, 325]
+      ZOrder		      48
+      RisingSlewLimit	      "30"
+      FallingSlewLimit	      "-30"
+      SampleTimeMode	      "inherited"
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "Real motor"
       SID		      "8"
@@ -1682,7 +1700,7 @@ Model {
       Variant		      off
       System {
 	Name			"Real motor"
-	Location		[-7, 0, 967, 1047]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -2282,6 +2300,7 @@ Model {
       Position		      [240, 240, 270, 270]
       ZOrder		      -16
       NamePlacement	      "alternate"
+      Gain		      "-1"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -2863,7 +2882,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"200"
 	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
@@ -3734,13 +3753,6 @@ Model {
       }
     }
     Line {
-      ZOrder		      48
-      SrcBlock		      "Position"
-      SrcPort		      1
-      DstBlock		      "gain"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      85
       SrcBlock		      "Q4 DI "
       SrcPort		      1
@@ -3824,6 +3836,22 @@ Model {
       DstBlock		      "Q4 DO "
       DstPort		      3
     }
+    Line {
+      ZOrder		      151
+      SrcBlock		      "Position"
+      SrcPort		      1
+      Points		      [3, 0; 0, 55]
+      DstBlock		      "Rate Limiter"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      152
+      SrcBlock		      "Rate Limiter"
+      SrcPort		      1
+      Points		      [9, 0; 0, -27; -24, 0]
+      DstBlock		      "gain"
+      DstPort		      1
+    }
     Annotation {
       SID		      "207"
       Position		      [1009, -432, 1264, -170]
@@ -3836,7 +3864,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      155
+      ZOrder		      165
       FontSize		      12
     }
     Annotation {
@@ -3851,7 +3879,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      156
+      ZOrder		      166
       FontSize		      12
     }
     Annotation {
@@ -3865,7 +3893,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      157
+      ZOrder		      167
       FontSize		      12
     }
     Annotation {
@@ -3879,7 +3907,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      158
+      ZOrder		      168
       FontSize		      12
     }
     Annotation {
@@ -3894,7 +3922,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      159
+      ZOrder		      169
       FontSize		      12
     }
     Annotation {
@@ -4066,8 +4094,8 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function [low,high] = fcn(state)\n\nperiod = 20e-3;\n\nstep = 30e-9;\n\nif state == 1\n    time_h"
-      "igh = 0.73e-3;\nelseif state == 2\n    time_high = 2e-3;\nelse\n    time_high = 0.9e-3;\nend\n\nlow = round((per"
-      "iod-time_high)/step);\nhigh = round(time_high/step);\n\n\nend"
+      "igh = 0.73e-3;\nelseif state == 2\n    time_high = 0.65e-3;\nelse\n    time_high = 0.9e-3;\nend\n\nlow = round(("
+      "period-time_high)/step);\nhigh = round(time_high/step);\n\n\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
