@@ -1,26 +1,31 @@
-function ret = IDpiece(id)
-if id == king(us)
+function ret = IDpiece(X,Y)
+global board;
+team = board(X,Y).team;
+type = board(X,Y).type;
+if team == us && type == king 
     ret = "User King";
-elseif id == queen(us)
+elseif team == us && type == queen
     ret = "User Queen";
-elseif id == bishop(us)
+elseif team == us && type == bishop
     ret = "User Bishop";
-elseif id == knight(us)
+elseif team == us && type == knight
     ret ="User Bishop";
-elseif id == rook(us)
+elseif team == us && type == rook
     ret = "User Rook";
-elseif id ==  pawn(us)
+elseif team == us && type == pawn
     ret = "User Pawn";
-elseif id ==  king(them)
+elseif team == them && type == king
     ret = "Opponent King";
-elseif id == queen(them)
+elseif team == them && type == queen
     ret = "Opponent Queen";
-elseif id == bishop(them)
+elseif team == them && type == bishop
     ret = "Opponent Bishop";
-elseif id ==  knight(them)
+elseif team == them && type == knight
     "Opponent Knight";
-elseif id == rook(them)
+elseif team == them && type == rook
     ret = "Opponent Rook";
-elseif id == pawn(them)
+elseif team == them && type == pawn
     ret = "Opponent Pawn";
+else 
+    ret = "";
 end    
