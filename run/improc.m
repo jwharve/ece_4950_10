@@ -2,14 +2,27 @@ function improc(gui)
 global board;
 global bot;
 
+% set up disks for improc
+se1 = strel('disk',1);
+se2 = strel('disk',2);
+se3 = strel('disk',3);
+se4 = strel('disk',4);
+se5 = strel('disk',5);
+se6 = strel('disk',6);
+
+di1 = strel('diamond',1);
+di2 = strel('diamond',2);
+di3 = strel('diamond',3);
+di4 = strel('diamond',4);
+
 %% setup
 
-connected = 1; % set to 0 if not connected to Q4 board
+connected = 0; % set to 0 if not connected to Q4 board
 
-boardWidth = 50;
+boardWidth = 365;
 squareWidth = boardWidth/numSquares;
 
-new = 1; % 1 means new picture
+new = 0; % 1 means new picture
 
 if new == 1 % if you want to take a new picture
     % check to make sure that the webcam is plugged in
@@ -44,44 +57,42 @@ if new == 1 % if you want to take a new picture
 else % if you want to use previous pictures
     % load the last picture by timestamp
     pics = ls('saved_pics/pics_*.mat');
-    load(pics(end,:),'with','without');
+    load(['saved_pics/' pics(end,:)],'with','without');
 end
 
 %% subtraction
-redImg = without(:,:,1) - with(:,:,1);
-greenImg = without(:,:,2) - with(:,:,2);
-blueImg = without(:,:,3) - with(:,:,3);
+x = bot.corner_loc(2);
+y = bot.corner_loc(1);
+withc = with(x:x+boardWidth,y:y+boardWidth,:);
 
-thresh = 0.2;
+withsv = rgb2hsv(withc);
 
-% threshold
-subtractr = im2bw(redImg,thresh);
-subtractg = im2bw(greenImg,thresh);
-subtractb = im2bw(blueImg,thresh);
+h = withsv(:,:,1);
+s = withsv(:,:,2);
+v = withsv(:,:,3);
 
-% overlay the images
-pic = zeros(size(subtractr));
-for ii = 1:size(subtractr,1)
-    for jj = 1:size(subtractr,2)
-        if subtractr(ii,jj) == 1 || subtractg(ii,jj) == 1 || subtractb(ii,jj) == 1
-            pic(ii,jj) = 1;
-        end
-    end
-end
+hl = ~im2bw(h,0.25);
+hh = im2bw(h,0.85);
 
+vl = ~im2bw(v,0.6);
+
+sh = im2bw(s,0.25);
+sh = imdilate(sh,se3);
+% imshow(sh);
+
+pic = (hl | hh | vl) & sh;
+
+orig = pic;
+img = pic;
+imshow(pic)
+pause(2);
+img = imdilate(img,di3);
+img = imerode(img,di3);
+img = imdilate(img,di2);
+imshow(img);
+keyboard
 %% erode/dilate
-% set up disks for improc
-se1 = strel('disk',1);
-se2 = strel('disk',2);
-se3 = strel('disk',3);
-se4 = strel('disk',4);
-se5 = strel('disk',5);
-se6 = strel('disk',6);
 
-di1 = strel('diamond',1);
-di2 = strel('diamond',2);
-di3 = strel('diamond',3);
-di4 = strel('diamond',4);
 
 % erode and dilate
 img = pic;
@@ -110,7 +121,7 @@ props = regionprops(bwconn);
 hold on;
 numPieces = 0;
 for ii = 1:size(props,1)        
-    if props(ii).Area > 20
+    if props(ii).Area > 30
         numPieces = numPieces + 1;
         center = props(ii).Centroid;
 

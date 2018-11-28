@@ -2,7 +2,7 @@ cc;
 global board
 global bot
 
-bot.corner_loc = [0 0];
+bot.corner_loc = [192 95];
 bot.motor_loc = [0 0];
 
 
