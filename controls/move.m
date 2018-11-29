@@ -1,8 +1,4 @@
 function move(x1, y1, x2, y2)
-
-fprintf('(%0.0f, %0.0f) to (%0.0f,%0.0f)\n',x1,y1,x2,y2);
-
-return;
 global board;
 global bot;
 
@@ -89,10 +85,9 @@ if x2 == 0 && y2 == 0
     return;
 end
 
-ind2 = sub2ind([numSquares,numSquares],y2,x2);
 
 if ~isnan(board(x2,y2).type)
-    move_piece(locations(x2,y2,2),locations(x2,y2,1),5,420);
+    remove_piece(locations(x2,y2,2),locations(x2,y2,1));
 end
 
 move_piece(locations(x1,y1,2),locations(x1,y1,1),locations(x2,y2,2),locations(x2,y2,1));
