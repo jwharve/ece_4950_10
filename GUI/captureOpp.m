@@ -20,7 +20,7 @@ if k==0 %no possible captured
     ret = 0;
 else
     for i=1:k
-        dist(k) = sqrt((origin(k,1)-X_them)^2 + (origin(k,2)-Y_them)^2);
+        dist(i) = sqrt((origin(i,1)-X_them)^2 + (origin(i,2)-Y_them)^2);
     end
     [~,min_indx] = min(dist);
     ret = origin(min_indx,:);
