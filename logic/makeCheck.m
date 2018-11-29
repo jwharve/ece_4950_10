@@ -29,7 +29,7 @@ for ii = 1:size(mx,1) % go through all possible moves
     board(ix,iy).team = NaN;
     board(mx(ii),my(ii)).type = type;
     board(mx(ii),my(ii)).team = team;
-    if isCheck(other) == 1
+    if isCheck(other) == 1 && isCheck(us) == 0
         good = 1;
         board = backup;
         break;

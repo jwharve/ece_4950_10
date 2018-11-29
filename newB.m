@@ -9,8 +9,8 @@ board(5,5).team = us;
 board(7,3).type = pawn;
 board(7,3).team = us;
 
-board(8,5).type = king;
-board(8,5).team = them;
+board(7,4).type = rook;
+board(7,4).team = them;
 
 % board(8,2).type = bishop;
 % board(8,2).team = them;
