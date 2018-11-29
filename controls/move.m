@@ -2,6 +2,10 @@ function move(x1, y1, x2, y2)
 global board;
 global bot;
 
+if x1 == x2 && y1 == y2
+    return;
+end
+
 locations(1,8,:) = [45      37.35];
 locations(1,7,:) = [75      31.95];
 locations(1,6,:) = [115     25.65];

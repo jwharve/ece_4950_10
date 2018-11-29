@@ -2,9 +2,9 @@ cc;
 global board
 global bot
 
-bot.corner_loc = [191 92];
+bot.corner_loc = [187 95];
 
-bot.boardWidth = 365;
+bot.boardWidth = 370;
 squareWidth = bot.boardWidth/numSquares;
 bot.motor_loc = bot.corner_loc-2.5*squareWidth;
 

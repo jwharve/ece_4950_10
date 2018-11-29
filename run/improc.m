@@ -77,13 +77,17 @@ hh = im2bw(h,0.85);
 
 vl = ~im2bw(v,0.6);
 
-sh = im2bw(s,0.25);
-sh = imdilate(sh,se3);
+sh = im2bw(s,0.20);
+sh = imdilate(sh,se2);
+sh = imerode(sh,di2);
+sh = imdilate(sh,se2);
+
 % imshow(sh);
 
 vh = ~im2bw(v,0.52);
 
 pic = ((hl | hh | vl) & sh) | vh;
+pic = ((hl | hh | vl) & sh);
 
 orig = pic;
 img = pic;
@@ -92,15 +96,15 @@ pause(2);
 
 %% erode/dilate
 
+img = imdilate(img,se1);
+imshow(img)
+pause(1);
 img = imerode(img,di2);
 imshow(img)
 pause(1);
-img = imerode(img,di1);
-imshow(img)
-pause(1);
-img = imdilate(img,se2);
-imshow(img)
-pause(1);
+% img = imdilate(img,se2);
+% imshow(img)
+% pause(1);
 
 
 
@@ -127,7 +131,7 @@ props = regionprops(bwconn);
 hold on;
 numPieces = 0;
 for ii = 1:size(props,1)        
-    if props(ii).Area > 100
+    if props(ii).Area > 60
         numPieces = numPieces + 1;
         center = props(ii).Centroid;
 
@@ -136,10 +140,10 @@ for ii = 1:size(props,1)
         p = props(ii).Area/ba;
         
         %get shape
-        if props(ii).Area < 250
+        if props(ii).Area < 260
             stype = 'Triangle';
             marker = '^';
-        elseif props(ii).Area < 500
+        elseif props(ii).Area < 475
             stype = 'Square';
             marker = 's';
         else
@@ -160,7 +164,7 @@ for ii = 1:size(props,1)
             continue;
         end
         
-        if r > 150 && r < 210 && g > 150 && g < 210 && b > 85 && b < 130
+        if r > 150 && r < 210 && g > 150 && g < 210 && b > 85 && b < 150
             color = 'y';
             colorName = 'Yellow';
         elseif r < 110 && g < 130 && b > 120
@@ -233,7 +237,7 @@ for ii = 1:size(props,1)
             [type, team] = retnum(gui.encodedPieces(ind,2));
         end
         
-%         fprintf('%s detected at square %0.0f, %0.0f...size %0.0f\n',stype,xInd,yInd,props(ii).Area);
+%         fprintf('%s (%d,%d) - \t%0.0f\n',stype,xInd,yInd,props(ii).Area);
         
         fprintf('%s (%d,%d) - \tr-%0.0f\tg-%0.0f\tb-%0.0f\n',colorName,xInd,yInd,r,g,b);
 
