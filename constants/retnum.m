@@ -1,6 +1,8 @@
 function [type, team] = retnum(in)
 try 
-    in = in{1};
+    if iscell(in)
+        in = in{1};
+    end
 catch error
     type = 1;
     team = 0;
