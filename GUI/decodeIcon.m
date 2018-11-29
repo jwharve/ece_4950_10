@@ -1,4 +1,5 @@
 function icon = decodeIcon(list,piece)
+icon = 'blueCircle.png';
     for i=1:size(list,1)
         if list{i,2} == piece
             charVect = char(list{i,1});

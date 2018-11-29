@@ -30,7 +30,6 @@ end
 if connected
     improc(gui);
 end
-
 %% Generate Possible Moves
 % % random testing
 % [x, y] = ind2sub([numSquares numSquares],randperm(numSquares^2));
@@ -39,9 +38,18 @@ end
 %     board(x(ii),y(ii)).team = randi(2);
 % end
 
+% board(4,4).type = knight;
+% board(4,4).team = us;
+% 
+% board(6,3).type = pawn;
+% board(6,3).team = them;
+% 
+% board(5,8).type = rook;
+% board(5,8).them = them;
+% 
 % board(1,1).type = king;
 % board(1,1).team = us;
-% board(1,1).num = 1;
+
 % board(1,1).angle = 45;
 % x = bot.motor_loc(1) + bot.corner_loc(1);
 % y = bot.motor_loc(2) + bot.corner_loc(2);
@@ -60,4 +68,8 @@ improc_done = 1;
 
 
 %% Cleanup
-
+% 
+% search = reshape([board.type],numSquares,numSquares)'
+% board(6,3).possible'
+% board(4,4).possible'
+% move(4,4,6,3)

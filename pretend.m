@@ -2,7 +2,7 @@ cc;
 global board
 global bot
 
-bot.corner_loc = [192 95];
+bot.corner_loc = [191 92];
 
 bot.boardWidth = 365;
 squareWidth = bot.boardWidth/numSquares;

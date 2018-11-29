@@ -32,7 +32,7 @@ classdef Control < handle
             obj.pickup_steps = 1100;
             obj.dist2steps = 1;
             
-            obj.corner_loc = [186 100];
+            obj.corner_loc = [191 92];
             obj.boardWidth = 365;
             squareWidth = obj.boardWidth/numSquares;
             obj.motor_loc = [-2.5*squareWidth -2.5*squareWidth];
@@ -130,7 +130,7 @@ classdef Control < handle
         
         function hit_load(obj)
             obj.arm_pos(10);
-            obj.step_out(120);
+            obj.step_out(100);
             obj.stepper_done;
             obj.claw(5);
             obj.arm_done;

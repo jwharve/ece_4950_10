@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.161"
+    ComputedModelVersion    "1.162"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -182,7 +182,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
 	ZoomFactor		[1.75]
-	Offset			[-99.331286498954768, -418.420425220531]
+	Offset			[599.92580623470349, -507.41034868747874]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -216,9 +216,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 28 12:47:26 2018"
-  RTWModifiedTimeStamp	  465310044
-  ModelVersionFormat	  "1.%<AutoIncrement:161>"
+  LastModifiedDate	  "Wed Nov 28 16:41:34 2018"
+  RTWModifiedTimeStamp	  465310092
+  ModelVersionFormat	  "1.%<AutoIncrement:162>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -3129,7 +3129,7 @@ Model {
       }
       System {
 	Name			"sw_log"
-	Location		[953, 0, 1927, 1047]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off

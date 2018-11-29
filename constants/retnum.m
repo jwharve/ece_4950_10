@@ -1,5 +1,11 @@
 function [type, team] = retnum(in)
-
+try 
+    in = in{1};
+catch error
+    type = 1;
+    team = 0;
+    return;
+end
 if strcmpi(in,'User bishop')
     type = bishop;
     team = us;
@@ -38,6 +44,7 @@ elseif strcmpi(in,'Opponent rook')
     team = them;
 else
     type = 1;
+    team = 0;
 end
 
 end

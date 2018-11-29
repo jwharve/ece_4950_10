@@ -1,20 +1,7 @@
 function improc(gui)
 global board;
 global bot;
-gui.encodedPieces = {
-'Green Circle'      'User bishop'
-'Red Circle'        'Opponent bishop'
-'Yellow Circle'     'User king'
-'Blue Circle'       'Opponent king'
-'Green Square'      'User knight'
-'Red Square'        'Opponent knight'
-'Yellow Square'     'User pawn'
-'Blue Square'       'Opponent pawn'
-'Green Triangle'    'User queen'
-'Red Triangle'      'Opponent queen'
-'Yellow Triangle'   'User rook'
-'Blue Triangle'     'Opponent rook'
-};
+
 
 % set up disks for improc
 se1 = strel('disk',1);
@@ -94,7 +81,9 @@ sh = im2bw(s,0.25);
 sh = imdilate(sh,se3);
 % imshow(sh);
 
-pic = (hl | hh | vl) & sh;
+vh = ~im2bw(v,0.52);
+
+pic = ((hl | hh | vl) & sh) | vh;
 
 orig = pic;
 img = pic;
@@ -102,18 +91,31 @@ imshow(pic)
 pause(2);
 
 %% erode/dilate
-img = imdilate(img,se1);
+
+img = imerode(img,di2);
+imshow(img)
+pause(1);
+img = imerode(img,di1);
 imshow(img)
 pause(1);
 img = imdilate(img,se2);
 imshow(img)
 pause(1);
-img = imerode(img,di3);
-imshow(img)
-pause(1);
-img = imdilate(img,se2);
-imshow(img)
-pause(1);
+
+
+
+% img = imdilate(img,se1);
+% imshow(img)
+% pause(1);
+% img = imdilate(img,se2);
+% imshow(img)
+% pause(1);
+% img = imerode(img,di3);
+% imshow(img)
+% pause(1);
+% img = imdilate(img,se2);
+% imshow(img)
+% pause(1);
 
 % display the original and processed
 imshowpair(withc,img,'montage');
@@ -125,15 +127,19 @@ props = regionprops(bwconn);
 hold on;
 numPieces = 0;
 for ii = 1:size(props,1)        
-    if props(ii).Area > 200
+    if props(ii).Area > 100
         numPieces = numPieces + 1;
         center = props(ii).Centroid;
 
+        ba = props(ii).BoundingBox(3)*props(ii).BoundingBox(4);
+        
+        p = props(ii).Area/ba;
+        
         %get shape
-        if props(ii).Area < 500
+        if props(ii).Area < 250
             stype = 'Triangle';
             marker = '^';
-        elseif props(ii).Area < 700
+        elseif props(ii).Area < 500
             stype = 'Square';
             marker = 's';
         else
@@ -146,9 +152,13 @@ for ii = 1:size(props,1)
         a = round(props(ii).Centroid);
         row = a(1);
         col = a(2);
-        r = mean(mean(with(col-5:col+5, row-5:row+5,1)));
-        g = mean(mean(with(col-5:col+5, row-5:row+5,2)));
-        b = mean(mean(with(col-5:col+5, row-5:row+5,3)));
+        try
+            r = mean(mean(withc(col-5:col+5, row-5:row+5,1)));
+            g = mean(mean(withc(col-5:col+5, row-5:row+5,2)));
+            b = mean(mean(withc(col-5:col+5, row-5:row+5,3)));
+        catch error
+            continue;
+        end
         
         if r > 150 && r < 210 && g > 150 && g < 210 && b > 85 && b < 130
             color = 'y';
@@ -177,63 +187,68 @@ for ii = 1:size(props,1)
         xInd = floor(x/squareWidth) + 1;
         yInd = floor(y/squareWidth) + 1;
         
+        xInd = xInd;
+        yInd = numSquares - yInd + 1;
+        
         if (xInd > numSquares || yInd > numSquares)
             fprintf('Piece off of side of board');
             continue;
         end
         
         if color == 'r' && marker == '^'
-            ind = strcmpi(gui.encodedPieces(:,1),'Red Triangle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Red Triangle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'r' && marker == 's'
-            ind = strcmpi(gui.encodedPieces(:,1),'Red Square');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Red Square');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'r' && marker == 'o'
-            ind = strcmpi(gui.encodedPieces(:,1),'Red Circle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Red Circle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == '^'
-            ind = strcmpi(gui.encodedPieces(:,1),'Green Triangle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Green Triangle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == 's'
-            ind = strcmpi(gui.encodedPieces(:,1),'Green Square');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Green Square');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'g' && marker == 'o'
-            ind = strcmpi(gui.encodedPieces(:,1),'Green Circle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Green Circle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == '^'
-            ind = strcmpi(gui.encodedPieces(:,1),'Blue Triangle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Blue Triangle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == 's'
-            ind = strcmpi(gui.encodedPieces(:,1),'Blue Square');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Blue Square');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'b' && marker == 'o'
-            ind = strcmpi(gui.encodedPieces(:,1),'Blue Circle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Blue Circle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == '^'
-            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Triangle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Yellow Triangle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == 's'
-            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Square');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Yellow Square');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         elseif color == 'y' && marker == 'o'
-            ind = strcmpi(gui.encodedPieces(:,1),'Yellow Circle');
+            ind = strcmpi([gui.encodedPieces{:,1}],'Yellow Circle');
             [type, team] = retnum(gui.encodedPieces(ind,2));
         end
         
-        fprintf('%s detected at square %0.0f, %0.0f...size %0.0f\n',stype,xInd,yInd,props(ii).Area);
+%         fprintf('%s detected at square %0.0f, %0.0f...size %0.0f\n',stype,xInd,yInd,props(ii).Area);
         
+        fprintf('%s (%d,%d) - \tr-%0.0f\tg-%0.0f\tb-%0.0f\n',colorName,xInd,yInd,r,g,b);
+
         board(xInd,yInd).type = type;
-        board(xInd,yInd).type = team;
+        board(xInd,yInd).team = team;
         
         xa = x-bot.motor_loc(1);
         ya = y-bot.motor_loc(2);
         
         % calculate angle
-        angle = atand(xa/ya)
+        angle = atand(xa/ya);
         board(xInd,yInd).angle = angle;
         
         % calculate distance
-        dist = sqrt(xa^2+ya^2)
+        dist = sqrt(xa^2+ya^2);
         board(xInd,yInd).dist = dist;
     end
 end

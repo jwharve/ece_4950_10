@@ -1,96 +1,101 @@
 function move(x1, y1, x2, y2)
+
+fprintf('(%0.0f, %0.0f) to (%0.0f,%0.0f)\n',x1,y1,x2,y2);
+
+return;
 global board;
 global bot;
 
-locations = [
-45      37.35;
-75      31.95;
-115     25.65;
-155     20.25;
-190     17.3;
-220     15.53;
-265     13.05;
-310     11.93;
+locations(1,8,:) = [45      37.35];
+locations(1,7,:) = [75      31.95];
+locations(1,6,:) = [115     25.65];
+locations(1,5,:) = [155     20.25];
+locations(1,4,:) = [190     17.3];
+locations(1,3,:) = [220     15.53];
+locations(1,2,:) = [265     13.05];
+locations(1,1,:) = [310     11.93];
 
-70      46.35;
-105     39.60;
-130     33.75;
-170     28.35;
-210     26.10;
-245     23.85;
-280     19.35;
-320     18.23;
+locations(2,8,:) = [70      46.35];
+locations(2,7,:) = [105     39.60];
+locations(2,6,:) = [130     33.75];
+locations(2,5,:) = [170     28.35];
+locations(2,4,:) = [210     26.10];
+locations(2,3,:) = [245     23.85];
+locations(2,2,:) = [280     19.35];
+locations(2,1,:) = [320     18.23];
 
-110     53.33;
-135     45.45;
-165     39.60;
-195     34.88;
-230     31.28;
-260     29.48;
-300     26.10;
-340     23.85;
+locations(3,8,:) = [110     53.33];
+locations(3,7,:) = [135     45.45];
+locations(3,6,:) = [165     39.60];
+locations(3,5,:) = [195     34.88];
+locations(3,4,:) = [230     31.28];
+locations(3,3,:) = [260     29.48];
+locations(3,2,:) = [300     26.10];
+locations(3,1,:) = [340     23.85];
 
-150     56.93;
-170     51.30;
-195     45.68;
-220     40.27;
-255     36.90;
-285     33.75;
-325     31.50;
-360     27.2;
+locations(4,8,:) = [150     56.93];
+locations(4,7,:) = [170     51.30];
+locations(4,6,:) = [195     45.68];
+locations(4,5,:) = [220     40.27];
+locations(4,4,:) = [255     36.90];
+locations(4,3,:) = [285     33.75];
+locations(4,2,:) = [325     31.50];
+locations(4,1,:) = [360     27.2];
 
-185     61.43;
-210     54.90;
-230     50.18;
-260     45.98;
-285     41.60;
-315     38.70;
-350     35.55;
-380     32.05;
+locations(5,8,:) = [185     61.43];
+locations(5,7,:) = [210     54.90];
+locations(5,6,:) = [230     50.18];
+locations(5,5,:) = [260     45.98];
+locations(5,4,:) = [285     41.60];
+locations(5,3,:) = [315     38.70];
+locations(5,2,:) = [350     35.55];
+locations(5,1,:) = [380     32.05];
 
-220     64.58;
-245     59.18;
-265     54.06;
-290     49.50;
-320     45.68;
-350     42.38;
-380     39.60;
-405     36.90;
+locations(6,8,:) = [185     61.43];
+locations(6,7,:) = [210     54.90];
+locations(6,6,:) = [230     50.18];
+locations(6,5,:) = [260     45.98];
+locations(6,4,:) = [285     41.60];
+locations(6,3,:) = [315     38.70];
+locations(6,2,:) = [350     35.55];
+locations(6,1,:) = [380     32.05];
 
-260     67.28;
-280     62.10;
-300     57.15;
-325     53.10;
-350     48.68;
-380     44.77;
-405     41.85;
-430     39.80;
+locations(7,8,:) = [260     67.28];
+locations(7,7,:) = [280     62.10];
+locations(7,6,:) = [300     57.15];
+locations(7,5,:) = [325     53.10];
+locations(7,4,:) = [350     48.68];
+locations(7,3,:) = [380     44.77];
+locations(7,2,:) = [405     41.85];
+locations(7,1,:) = [430     39.80];
 
-300     70.4;
-320     66.1;
-340     61.8;
-355     56.80;
-380     52.20;
-405     48.60;
-430     45.68;
-460     43.43;
-];
+locations(8,8,:) = [300     70.4];
+locations(8,7,:) = [320     66.1];
+locations(8,6,:) = [340     61.8];
+locations(8,5,:) = [355     56.80];
+locations(8,4,:) = [380     52.20];
+locations(8,3,:) = [405     48.60];
+locations(8,2,:) = [430     45.68];
+locations(8,1,:) = [460     43.43];
 
-ind1 = sub2ind([numSquares,numSquares],x1,y1);
-ind2 = sub2ind([numSquares,numSquares],x2,y2);
+locations(:,:,1) = locations(:,:,1) - 10;
 
 tic
 
 if x2 == 0 && y2 == 0
-    move_piece(locations(ind1,2),locations(ind1,1),5,420);
+    move_piece(locations(x1,y1,2),locations(x1,y1,1),5,420);
+    bot.hit_load();
+    bot.time;
     return;
 end
 
+ind2 = sub2ind([numSquares,numSquares],y2,x2);
+
 if ~isnan(board(x2,y2).type)
-    move_piece(locations(ind2,2),locations(ind2,1),5,420);
+    move_piece(locations(x2,y2,2),locations(x2,y2,1),5,420);
 end
 
-move_piece(locations(ind1,2),locations(ind1,1),locations(ind2,2),locations(ind2,1));
+move_piece(locations(x1,y1,2),locations(x1,y1,1),locations(x2,y2,2),locations(x2,y2,1));
 
 bot.hit_load();
 

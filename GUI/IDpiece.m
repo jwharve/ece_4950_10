@@ -2,6 +2,8 @@ function ret = IDpiece(X,Y)
 global board;
 team = board(X,Y).team;
 type = board(X,Y).type;
+ret = "";
+
 if team == us && type == king 
     ret = "User King";
 elseif team == us && type == queen
@@ -9,7 +11,7 @@ elseif team == us && type == queen
 elseif team == us && type == bishop
     ret = "User Bishop";
 elseif team == us && type == knight
-    ret ="User Bishop";
+    ret ="User Knight";
 elseif team == us && type == rook
     ret = "User Rook";
 elseif team == us && type == pawn
@@ -21,7 +23,7 @@ elseif team == them && type == queen
 elseif team == them && type == bishop
     ret = "Opponent Bishop";
 elseif team == them && type == knight
-    "Opponent Knight";
+    ret = "Opponent Knight";
 elseif team == them && type == rook
     ret = "Opponent Rook";
 elseif team == them && type == pawn

@@ -2,9 +2,9 @@ function [x, y] = makeCheck(ix,iy)
 global board
 backup = board;
 
-[idx, idy] = find(~isnan(board(ix,iy).possible));
+[mx, my] = find(~isnan(board(ix,iy).possible));
 
-if isempty(idx)
+if isempty(mx)
     x = NaN;
     y = NaN;
     board = backup;
@@ -22,10 +22,13 @@ end
 
 good = 0;
 
-for ii = 1:size(idx,1)
+for ii = 1:size(mx,1) % go through all possible moves
     board = backup;
+    
     board(ix,iy).type = NaN;
-    board(idx(ii),idy(ii)).type = type;
+    board(ix,iy).team = NaN;
+    board(mx(ii),my(ii)).type = type;
+    board(mx(ii),my(ii)).team = team;
     if isCheck(other) == 1
         good = 1;
         board = backup;
@@ -34,8 +37,8 @@ for ii = 1:size(idx,1)
 end
 
 if good == 1
-    x = idx(ii);
-    y = idy(ii);
+    x = mx(ii);
+    y = my(ii);
 else
     x = NaN;
     y = NaN;
