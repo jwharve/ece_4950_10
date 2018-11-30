@@ -27,7 +27,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.162"
+    ComputedModelVersion    "1.165"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -181,8 +181,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
-	ZoomFactor		[1.75]
-	Offset			[599.92580623470349, -507.41034868747874]
+	ZoomFactor		[1.0]
+	Offset			[20.354835304424967, -114.12943595547722]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -216,9 +216,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Joshua"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 28 16:41:34 2018"
-  RTWModifiedTimeStamp	  465310092
-  ModelVersionFormat	  "1.%<AutoIncrement:162>"
+  LastModifiedDate	  "Fri Nov 30 14:19:10 2018"
+  RTWModifiedTimeStamp	  465488350
+  ModelVersionFormat	  "1.%<AutoIncrement:165>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1367,9 +1367,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "175"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "240"
+    SIDHighWatermark	    "244"
     Block {
       BlockType		      Reference
       Name		      "Data Display"
@@ -1439,7 +1439,7 @@ Model {
       Position		      [480, 310, 535, 360]
       ZOrder		      -7
       BackgroundColor	      "yellow"
-      Gain		      "0.0005"
+      Gain		      "0.0001"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1451,7 +1451,7 @@ Model {
       Position		      [495, 390, 555, 430]
       ZOrder		      -8
       BackgroundColor	      "yellow"
-      Gain		      "0"
+      Gain		      "0.001"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1684,8 +1684,8 @@ Model {
       SID		      "240"
       Position		      [205, 295, 235, 325]
       ZOrder		      48
-      RisingSlewLimit	      "30"
-      FallingSlewLimit	      "-30"
+      RisingSlewLimit	      "15"
+      FallingSlewLimit	      "-15"
       SampleTimeMode	      "inherited"
     }
     Block {
@@ -1700,7 +1700,7 @@ Model {
       Variant		      off
       System {
 	Name			"Real motor"
-	Location		[-8, -8, 1928, 1048]
+	Location		[953, 0, 1927, 1047]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -1721,6 +1721,18 @@ Model {
 	  Position		  [25, 63, 55, 77]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Add"
+	  SID			  "243"
+	  Ports			  [2, 1]
+	  Position		  [955, 62, 985, 93]
+	  ZOrder		  4
+	  Inputs		  "+-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Reference
@@ -1766,6 +1778,14 @@ Model {
 	  preserveCounts	  "[0]"
 	  sampleTime		  ".0001"
 	  slot			  "-1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Offset"
+	  SID			  "244"
+	  Position		  [835, 185, 865, 215]
+	  ZOrder		  5
+	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Saturate
@@ -1833,7 +1853,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "position\nin degrees"
 	  SID			  "15"
-	  Position		  [825, 63, 855, 77]
+	  Position		  [1180, 73, 1210, 87]
 	  ZOrder		  -6
 	  IconDisplay		  "Port number"
 	}
@@ -1856,13 +1876,6 @@ Model {
 	  }
 	}
 	Line {
-	  ZOrder		  2
-	  SrcBlock		  "angular_position = \n[relative_count/COUNTS_PER_REV] *360 degrees"
-	  SrcPort		  1
-	  DstBlock		  "position\nin degrees"
-	  DstPort		  1
-	}
-	Line {
 	  ZOrder		  3
 	  SrcBlock		  "Channel 0 of \nEncoder Inputs "
 	  SrcPort		  1
@@ -1875,6 +1888,28 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Saturation"
 	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  24
+	  SrcBlock		  "Add"
+	  SrcPort		  1
+	  DstBlock		  "position\nin degrees"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  25
+	  SrcBlock		  "angular_position = \n[relative_count/COUNTS_PER_REV] *360 degrees"
+	  SrcPort		  1
+	  DstBlock		  "Add"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  26
+	  SrcBlock		  "Offset"
+	  SrcPort		  1
+	  Points		  [40, 0; 0, -115]
+	  DstBlock		  "Add"
+	  DstPort		  2
 	}
 	Annotation {
 	  SID			  "80"
@@ -4064,9 +4099,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
-    visible		    1
-    subviewS {
-    }
     ssIdHighWaterMark	    6
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

@@ -6,6 +6,7 @@ classdef Control < handle
         diff_out_steps
         down_state
         time
+        
         % constants
         pickup_steps
         dist2steps
@@ -28,6 +29,16 @@ classdef Control < handle
             
             obj.time = 0;
             
+            % step back
+            % disable
+            obj.tg.setparam(obj.tg.getparamid('stepper_out/enable','Value'),0);
+            % set direction
+            obj.tg.setparam(obj.tg.getparamid('stepper_out/my_dir','Value'),in);
+            % set num steps
+            obj.tg.setparam(obj.tg.getparamid('stepper_out/switch','Threshold'),10);
+            % enable
+            obj.tg.setparam(obj.tg.getparamid('stepper_out/enable','Value'),1);
+
             % constants
             obj.pickup_steps = 1100;
             obj.dist2steps = 1;

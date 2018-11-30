@@ -2,6 +2,7 @@
 % 8 squares
 clearvars; close all; clc; clear all;
 
+
 global board;
 global improc_done;
 global bot;
