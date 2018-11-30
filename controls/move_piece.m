@@ -18,6 +18,7 @@ bot.step_out(round(dist1));
 bot.stepper_done;
 
 % pick up piece
+bot.arm_done;
 bot.claw(opened);
 bot.step_down(down);
 bot.claw(closed);
@@ -39,6 +40,7 @@ bot.step_out(round(dist2));
 bot.stepper_done;
 
 % put down piece
+bot.arm_done;
 bot.step_down(down);
 bot.claw(opened);
 bot.step_down(up);

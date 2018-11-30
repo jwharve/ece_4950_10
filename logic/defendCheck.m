@@ -41,6 +41,10 @@ for ii = 1:size(idx,1) % cycle through pieces
             break;
         end
     end
+    
+    if good == 1
+        break;
+    end
 end
 
 if good == 1

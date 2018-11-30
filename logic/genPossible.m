@@ -121,8 +121,10 @@ elseif any(type == pawn)
             end
         end
     else
-        if i_y+1 <= numSquares && isnan(board(i_x,i_y-1).type)
-            board(i_x,i_y).possible(i_x,i_y-1) = 1;
+        if i_y-1 > 0
+            if isnan(board(i_x,i_y-1).type)
+                board(i_x,i_y).possible(i_x,i_y-1) = 1;
+            end
         end
         % check diagonals
         for ii = [-1 1]
