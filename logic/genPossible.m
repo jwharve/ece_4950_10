@@ -129,7 +129,7 @@ elseif any(type == pawn)
         % check diagonals
         for ii = [-1 1]
             % if it's off the board
-            if i_x+ii < 1 || i_x+ii > numSquares || i_y-1 > numSquares
+            if i_x+ii < 1 || i_x+ii > numSquares || i_y-1 < 1 || i_y-1 > numSquares
                 continue;
             end
             % if there's an opposing piece, it's valid

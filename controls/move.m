@@ -8,7 +8,7 @@ end
 
 locations(1,8,:) = [45      37.35];
 locations(1,7,:) = [75      31.75];
-locations(1,6,:) = [115     25.65];
+locations(1,6,:) = [125     25.65];
 locations(1,5,:) = [155     21.2];
 locations(1,4,:) = [190     18.3];
 locations(1,3,:) = [220     17.3];
@@ -69,16 +69,18 @@ locations(7,3,:) = [375     45.5];
 locations(7,2,:) = [400     42.3];
 locations(7,1,:) = [430     39.80];
 
-locations(8,8,:) = [300     70.4];
-locations(8,7,:) = [310     66.1];
-locations(8,6,:) = [325     61.8];
-locations(8,5,:) = [350     56.80];
-locations(8,4,:) = [370     52.20];
-locations(8,3,:) = [400     51.30];
-locations(8,2,:) = [425     46.13];
+locations(8,8,:) = [310     70.4];
+locations(8,7,:) = [325     66.1];
+locations(8,6,:) = [340     61.8];
+locations(8,5,:) = [365     56.80];
+locations(8,4,:) = [390     52.20];
+locations(8,3,:) = [415     50.40];
+locations(8,2,:) = [445     46.13];
 locations(8,1,:) = [460     42.43];
 
 locations(:,:,1) = locations(:,:,1) - 10;
+
+locations(7:8,1) = locations(7:8,1) + 20;
 
 tic
 
